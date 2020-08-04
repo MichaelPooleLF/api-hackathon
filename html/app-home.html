@@ -3,13 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap-grid.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.1/css/bootstrap.min.css"
+  integrity="sha512-oidSClV2QEJnexqKyjJZtJqqhWEpDfa/PIEFCSX8mVA9YlaruAfykMto2uMyV8rc7dt00LieW10osgOyDhMkqg=="
+  crossorigin="anonymous" />
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/app-home.css">
   <title>NightOut - Nights to Remember</title>
 </head>
 <body class="container">
   <nav class="row">
-    <h1 class="col-4">NightOut</h1>
-    <a class="col-2" href="app-start.html"><button>App-Start</button></a>
+    <h1 class="col-6">NightOut</h1>
+    <a class="home-button" href="app-start.html"><img src="../images/home-icon.svg" alt="home icon"></a>
   </nav>
+  <main class="row">
+    <form class="col-10 offset-1" action="#">
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" name="city" id="city">
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <select class="form-control" name="state" id="state"></select>
+      </div>
+      <button class="mx-auto" type="submit">Find Events</button>
+    </form>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+    integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+    crossorigin="anonymous"></script>
+  <script src="../js/fill-select-tag.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

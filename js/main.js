@@ -7,9 +7,9 @@ var get1 = $.ajax ({
 
 var get2 = $.ajax({
   method: "GET",
-  url: "https://app.ticketmaster.com/discovery/v2/events.json?city=sacramento&sort=date,asc&apikey=g8k9ENDeCGfdNGKiIo89wTNGIwGEMYIv",
+  url: "https://app.ticketmaster.com/discovery/v2/events.json?stateCode=AL&sort=date,asc&apikey=g8k9ENDeCGfdNGKiIo89wTNGIwGEMYIv",
   error: console.log,
-  success: findVenue
+  success: console.log
 })
 
 function findVenue(data) {

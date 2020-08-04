@@ -1,0 +1,25 @@
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  background-image: url(../images/cropped-galaxy-img.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+}
+
+button {
+  height: 65px;
+  width: 190px;
+  font-size: 24px;
+  border-radius: 18px;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  border: transparent;
+}
