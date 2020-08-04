@@ -2,7 +2,7 @@ var get1 = $.ajax ({
   method: "GET",
   url: "https://api.openbrewerydb.org/breweries?by_city=sacramento&by_state=california",
   error: console.log,
-  success: console.log
+  success: findBrewery
 })
 
 var get2 = $.ajax({
@@ -19,6 +19,9 @@ function findVenue(data) {
   for (var i = 0; i < numOfEvents; i++) {
     venueArray.push(events[i]._embedded.venues[0].address.line1);
   }
-  console.log(venueArray);
-  console.log(events[0].url);
+  console.log("Events:",data)
+}
+
+function findBrewery(data) {
+  console.log("breweries:", data);
 }
