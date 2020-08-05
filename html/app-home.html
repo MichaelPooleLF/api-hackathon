@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.1/css/bootstrap.min.css"
+    integrity="sha512-oidSClV2QEJnexqKyjJZtJqqhWEpDfa/PIEFCSX8mVA9YlaruAfykMto2uMyV8rc7dt00LieW10osgOyDhMkqg=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/app-home.css">
+  <title>NightOut - Nights to Remember</title>
+</head>
+<body>
+
+  <div class="page-1 container d-none">
+    <nav class="row">
+      <h1 class="col-6">NightOut</h1>
+      <a class="home-button" href="app-start.html"><img src="../images/home-icon.svg" alt="home icon"></a>
+    </nav>
+    <main class="row">
+      <form class="col-10 offset-1" action="#">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city" id="city">
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <select class="form-control" name="state" id="state"></select>
+        </div>
+        <button class="mx-auto" type="submit">Find Events</button>
+      </form>
+    </main>
+  </div>
+
+  <div class="page-2 container">
+    <nav class="row">
+      <h1 class="col-6">NightOut</h1>
+      <a class="home-button" href="app-start.html"><img src="../images/home-icon.svg" alt="home icon"></a>
+    </nav>
+    <main class="row">
+      <header class="col-12">
+        <h2>
+          Sacramento, CA
+        </h2>
+      </header>
+      <div class="col-12">
+        <h3>
+          Local Events
+        </h3>
+      </div>
+      <table class="col-10 offset-1 table table-sm events-table">
+        <tbody>
+          <tr>
+            <td>Event 1</td>
+          </tr>
+          <tr>
+            <td>Event 2</td>
+          </tr>
+          <tr>
+            <td>Event 3</td>
+          </tr>
+          <tr>
+            <td>Event 4</td>
+          </tr>
+          <tr class="border-bottom">
+            <td>Event 5</td>
+        </tbody>
+        </tr>
+      </table>
+      <div class="col-12">
+        <h3>
+          Local Breweries
+        </h3>
+      </div>
+      <table class="col-10 offset-1 table table-sm brewery-table">
+        <tbody>
+          <tr>
+            <td>Brewery 1</td>
+          </tr>
+          <tr>
+            <td>Brewery 2</td>
+          </tr>
+          <tr>
+            <td>Brewery 3</td>
+          </tr>
+          <tr>
+            <td>Brewery 4</td>
+          </tr>
+          <tr class="border-bottom">
+            <td>Brewery 5</td>
+        </tbody>
+        </tr>
+      </table>
+    </main>
+  </div>
+
+  <div class="events-modal my-modal container d-none">
+    <div class="row">
+      <div class="col-10">
+        <header>
+          <h4>Event 1</h4>
+        </header>
+        <ul>
+          <li>Artist</li>
+          <li>Address</li>
+          <li>Start Date</li>
+        </ul>
+        <button type="button" class="btn btn-dark">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="breweries-modal my-modal container d-none">
+    <div class="row">
+      <div class="col-10">
+        <header>
+          <h4>Brewery 1</h4>
+        </header>
+        <ul>
+          <li>Address</li>
+          <li>Type</li>
+          <li><a href="#">Website</a></li>
+        </ul>
+        <button type="button" class="btn btn-dark">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+    integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+    crossorigin="anonymous"></script>
+  <script src="../js/fill-select-tag.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

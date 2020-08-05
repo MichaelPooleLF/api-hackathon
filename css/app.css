@@ -1,0 +1,126 @@
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  background-image: url(../images/city-lights.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+}
+
+button {
+  height: 65px;
+  width: 190px;
+  font-size: 24px;
+  border-radius: 18px;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  border: transparent;
+}
+
+nav.row {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+nav h1 {
+  margin: 1rem auto 1rem 1rem;
+}
+
+a.home-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 1rem;
+}
+
+img {
+  height: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 22%;
+}
+
+label {
+  font-size: 24px;
+  letter-spacing: 0.15rem;
+  margin: 1rem auto 0
+}
+
+form button {
+  margin-top: 5rem;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+td {
+  text-align: center;
+  color: white;
+}
+
+.page-2 div {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.my-modal {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.my-modal .row {
+  justify-content: center;
+}
+
+.my-modal div div {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-modal header {
+  margin-top: 4rem;
+}
+
+ul {
+  margin-top: 1rem;
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.my-modal button {
+  width: 80px;
+  border-radius: 18px;
+}
