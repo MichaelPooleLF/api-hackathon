@@ -4,12 +4,13 @@ class App {
     this.display = display
     this.findBrewery = this.findBrewery.bind(this);
     this.updateP2Header = this.updateP2Header.bind(this);
+    this.getEventData = this.getEventData.bind(this);
+    this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
   }
 
   start(){
     this.getBreweryData();
-    this.getEventData();
-    this.form.onSubmit(this.updateP2Header);
+    this.form.onSubmit(this.updateP2Header, this.getEventData);
   }
 
   getBreweryData(){
@@ -25,17 +26,25 @@ class App {
     console.log("breweries:", data);
   }
 
-  getEventData() {
+  getEventData(city, stateCode) {
+    var apikey = "apikey=g8k9ENDeCGfdNGKiIo89wTNGIwGEMYIv";
     var get2 = $.ajax({
       method: "GET",
-      url: "https://app.ticketmaster.com/discovery/v2/events.json?stateCode=AL&sort=date,asc&apikey=g8k9ENDeCGfdNGKiIo89wTNGIwGEMYIv",
+      url: "https://app.ticketmaster.com/discovery/v2/events.json?stateCode=" +
+      stateCode + "&city=" + city + "&sort=date,asc&" + apikey,
       error: console.log,
-      success: console.log
+      success: this.handleGetEventsDataSuccess
     })
   }
 
   updateP2Header(city, stateCode) {
     this.display.page2Element.removeClass("d-none");
     this.display.headerElement.text(city + ", " + stateCode);
+  }
+
+  handleGetEventsDataSuccess(eventsObj) {
+    console.log("got event data:", eventsObj);
+    var events = eventsObj._embedded.events[0].name;
+    this.display.updateEventsTable(events);
   }
 }

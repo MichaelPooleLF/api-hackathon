@@ -8,8 +8,9 @@ class Form {
     this.formElement.on("submit", this.handleSubmit);
   }
 
-  onSubmit(updateP2Header) {
-    this.updateP2Header = updateP2Header;
+  onSubmit(updatep2Header, getEventData) {
+    this.updatep2Header = updatep2Header;
+    this.getEventData = getEventData;
   }
 
   handleSubmit(event){
@@ -17,6 +18,9 @@ class Form {
     var city = this.cityInput.val();
     var stateCode = this.stateInput.val();
     this.page1Element.addClass("d-none");
-    this.updateP2Header(city, stateCode);
+    this.updatep2Header(city, stateCode);
+    this.getEventData(city, stateCode);
+
+
   }
 }
