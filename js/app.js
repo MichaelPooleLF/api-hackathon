@@ -13,10 +13,17 @@ class App {
     this.form.onSubmit(this.updateP2Header, this.getEventData, this.getBreweryData);
   }
 
-  getBreweryData(){
+  getBreweryData(city, stateCode){
+    var stateName = "";
+    for (var property in stateCodes) {
+      if (stateCode === stateCodes[property].abbreviation) {
+        stateName += stateCodes[property].name;
+      }
+    }
     var get1 = $.ajax({
       method: "GET",
-      url: "https://api.openbrewerydb.org/breweries?by_city=sacramento&by_state=california",
+      url: "https://api.openbrewerydb.org/breweries?by_city=" + city +
+      "&by_state=" + stateName,
       error: console.log,
       success: this.handleGetBreweryDataSuccess
     });

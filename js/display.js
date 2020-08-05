@@ -9,7 +9,7 @@ class Display {
   updateEventsTable(events) {
     console.log("Events",events);
     var namesArray = [];
-    for (var i = 0; namesArray.length < 5; i++) {
+    for (var i = 0; namesArray.length < 3; i++) {
       var eventName = events[i].name;
       if (namesArray.indexOf(eventName) === -1) {
         namesArray.push(eventName);
@@ -22,5 +22,11 @@ class Display {
 
   updateBreweryTable(breweries) {
     console.log("Breweries:", breweries);
+    for (var i = 0; i < 3; i++) {
+      var breweryName = breweries[i].name;
+      var $td = $("<td>", { text:breweryName })
+      var $tr = $("<tr>");
+      this.breweryTable.append($tr.append($td));
+    }
   }
 }
