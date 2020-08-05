@@ -7,12 +7,11 @@
     integrity="sha512-oidSClV2QEJnexqKyjJZtJqqhWEpDfa/PIEFCSX8mVA9YlaruAfykMto2uMyV8rc7dt00LieW10osgOyDhMkqg=="
     crossorigin="anonymous" />
   <link rel="stylesheet" href="../css/app.css">
-  <link rel="stylesheet" href="../css/app-home.css">
   <title>NightOut - Nights to Remember</title>
 </head>
 <body>
 
-  <div class="page-1 container d-none">
+  <div class="page-1 container">
     <nav class="row">
       <h1 class="col-6">NightOut</h1>
       <a class="home-button" href="app-start.html"><img src="../images/home-icon.svg" alt="home icon"></a>
@@ -32,7 +31,7 @@
     </main>
   </div>
 
-  <div class="page-2 container">
+  <div class="page-2 container d-none">
     <nav class="row">
       <h1 class="col-6">NightOut</h1>
       <a class="home-button" href="app-start.html"><img src="../images/home-icon.svg" alt="home icon"></a>
@@ -48,48 +47,20 @@
           Local Events
         </h3>
       </div>
-      <table class="col-10 offset-1 table table-sm events-table">
-        <tbody>
-          <tr>
-            <td>Event 1</td>
-          </tr>
-          <tr>
-            <td>Event 2</td>
-          </tr>
-          <tr>
-            <td>Event 3</td>
-          </tr>
-          <tr>
-            <td>Event 4</td>
-          </tr>
-          <tr class="border-bottom">
-            <td>Event 5</td>
-        </tbody>
-        </tr>
+      <table class="col-10 offset-1 table table-sm events-table border-bottom">
+        <tbody></tbody>
       </table>
       <div class="col-12">
         <h3>
           Local Breweries
         </h3>
       </div>
-      <table class="col-10 offset-1 table table-sm brewery-table">
+      <table class="col-10 offset-1 table table-sm brewery-table border-bottom">
         <tbody>
           <tr>
-            <td>Brewery 1</td>
-          </tr>
-          <tr>
-            <td>Brewery 2</td>
-          </tr>
-          <tr>
-            <td>Brewery 3</td>
-          </tr>
-          <tr>
-            <td>Brewery 4</td>
-          </tr>
-          <tr class="border-bottom">
             <td>Brewery 5</td>
+          </tr>
         </tbody>
-        </tr>
       </table>
     </main>
   </div>
@@ -130,6 +101,9 @@
     integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
     crossorigin="anonymous"></script>
   <script src="../js/fill-select-tag.js"></script>
+  <script src="../js/display.js"></script>
+  <script src="../js/form.js"></script>
+  <script src="../js/app.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -1,27 +1,23 @@
-var get1 = $.ajax ({
-  method: "GET",
-  url: "https://api.openbrewerydb.org/breweries?by_city=sacramento&by_state=california",
-  error: console.log,
-  success: findBrewery
-})
+var $formElement = $("form");
+var $cityInput = $("#city");
+var $stateInput = $("#state");
+var $page1Element = $(".page-1");
+var $headerElement = $("header > h2");
+var $eventsTable = $(".events-table > tbody");
+var $breweryTable = $("brewery-table > tbody");
+var $page2Element = $(".page-2");
+var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element);
+var form = new Form($formElement, $cityInput, $stateInput, $page1Element);
+var app = new App(form, display);
+app.start();
+fillSelect(stateCodes);
 
-var get2 = $.ajax({
-  method: "GET",
-  url: "https://app.ticketmaster.com/discovery/v2/events.json?stateCode=AL&sort=date,asc&apikey=g8k9ENDeCGfdNGKiIo89wTNGIwGEMYIv",
-  error: console.log,
-  success: console.log
-})
-
-function findVenue(data) {
-  var events = data._embedded.events
-  var venueArray = [];
-  var numOfEvents = events.length;
-  for (var i = 0; i < numOfEvents; i++) {
-    venueArray.push(events[i]._embedded.venues[0].address.line1);
-  }
-  console.log("Events:",data)
-}
-
-function findBrewery(data) {
-  console.log("breweries:", data);
-}
+// function findVenue(data) {
+//   var events = data._embedded.events
+//   var venueArray = [];
+//   var numOfEvents = events.length;
+//   for (var i = 0; i < numOfEvents; i++) {
+//     venueArray.push(events[i]._embedded.venues[0].address.line1);
+//   }
+//   console.log("Events:",data)
+// }
