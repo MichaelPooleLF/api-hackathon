@@ -2,7 +2,7 @@
 
 var $selectTag = $("select");
 
-function filler(array) {
+function fillSelect(array) {
   for (var i = 0; array[i]; i++) {
     var $optionTag = $("<option>", {
       value: array[i].abbreviation,
@@ -249,5 +249,3 @@ var stateCodes = [
     "abbreviation": "WY"
   }
 ];
-
-filler(stateCodes);
