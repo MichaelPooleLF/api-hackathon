@@ -6,12 +6,13 @@ class Display {
     this.page2Element = page2Element;
     this.handleEventTableClick = this.handleEventTableClick.bind(this);
     this.eventsTable.on("click", this.handleEventTableClick);
+    this.handleBreweryTableClick = this.handleBreweryTableClick.bind(this);
     this.breweryTable.on("click", this.handleBreweryTableClick);
   }
 
-  onClick(showEventsModal, getEvent) {
-    this.showEventsModal = showEventsModal;
+  onClick(getEvent, showBreweryModal) {
     this.getEvent = getEvent;
+    this.showBreweryModal = showBreweryModal;
   }
 
   updateEventsTable(events) {
@@ -31,7 +32,6 @@ class Display {
   handleEventTableClick(event) {
     console.log("events Table", event.target);
     this.getEvent(event.target.getAttribute("id"));
-    // this.showEventsModal();
   }
 
   updateBreweryTable(breweries) {
@@ -46,5 +46,8 @@ class Display {
 
   handleBreweryTableClick(event) {
     console.log(event.target);
+    var id = event.target.getAttribute("id")
+    var breweryName = event.target.textContent;
+    this.showBreweryModal(id, breweryName);
   }
 }

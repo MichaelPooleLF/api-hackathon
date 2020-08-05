@@ -10,11 +10,13 @@ class App {
     this.handleGetBreweryDataSuccess = this.handleGetBreweryDataSuccess.bind(this);
     this.getEvent = this.getEvent.bind(this);
     this.showEventsModal = this.showEventsModal.bind(this);
+    this.getBrewery = this.getBrewery.bind(this);
+    this.showBreweryModal = this.showBreweryModal.bind(this);
   }
 
   start(){
     this.form.onSubmit(this.updateP2Header, this.getEventData, this.getBreweryData);
-    this.display.onClick(this.showEventsModal, this.getEvent);
+    this.display.onClick(this.getEvent, this.showBreweryModal);
   }
 
   getBreweryData(city, stateCode){
@@ -34,6 +36,7 @@ class App {
   }
 
   handleGetBreweryDataSuccess(breweriesObj) {
+    this.breweryCache = breweriesObj;
     this.display.updateBreweryTable(breweriesObj)
   }
 
@@ -69,15 +72,41 @@ class App {
     })
   }
 
+  getBrewery(name) {
+    var get1 = $.ajax({
+      method: "GET",
+      url: "https://api.openbrewerydb.org/breweries?by_city=" + city +
+        "&by_state=" + stateName,
+      error: console.log,
+      success: this.showBreweryModal
+    });
+  }
+
   showEventsModal(data) {
-    var event = data._embedded.events[0];
-    console.log(event);
     this.modals.eventModal.removeClass("d-none");
+    var event = data._embedded.events[0];
     var $h4Element = this.modals.eventModal.find("h4");
+    $h4Element.text(event.name);
     var $liElements = this.modals.eventModal.find("li");
-    var $address = $liElements[0];
-    var $startDate = $liElements[1];
-    var $website = $liElements[2];
-    console.log($h4Element, $address, $startDate, $website);
+    var address = $liElements[0];
+    address.textContent = "Where: " + event._embedded.venues[0].name;
+    var startDate = $liElements[1];
+    startDate.textContent = "When: " + event.dates.start.localDate;
+    var $website = this.modals.eventModal.find("a");
+    $website.attr("href", event.url)
+  }
+
+  showBreweryModal(id, breweryName) {
+    this.modals.breweriesModal.removeClass("d-none");
+    console.log(id, breweryName);
+    var $h4Element = this.modals.breweriesModal.find("h4");
+    $h4Element.text(breweryName);
+    // var $liElements = this.modals.breweriesModal.find("li");
+    // var address = $liElements[0];
+    // address.textContent = "Where: " + event._embedded.venues[0].name;
+    // var startDate = $liElements[1];
+    // startDate.textContent = "When: " + event.dates.start.localDate;
+    // var $website = this.modals.eventModal.find("a");
+    // $website.attr("href", event.url)
   }
 }
