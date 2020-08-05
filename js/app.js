@@ -2,15 +2,15 @@ class App {
   constructor(form, display){
     this.form = form;
     this.display = display
-    this.findBrewery = this.findBrewery.bind(this);
     this.updateP2Header = this.updateP2Header.bind(this);
     this.getEventData = this.getEventData.bind(this);
     this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
+    this.getBreweryData = this.getBreweryData.bind(this);
+    this.handleGetBreweryDataSuccess = this.handleGetBreweryDataSuccess.bind(this);
   }
 
   start(){
-    this.getBreweryData();
-    this.form.onSubmit(this.updateP2Header, this.getEventData);
+    this.form.onSubmit(this.updateP2Header, this.getEventData, this.getBreweryData);
   }
 
   getBreweryData(){
@@ -18,12 +18,12 @@ class App {
       method: "GET",
       url: "https://api.openbrewerydb.org/breweries?by_city=sacramento&by_state=california",
       error: console.log,
-      success: this.findBrewery
+      success: this.handleGetBreweryDataSuccess
     });
   }
 
-  findBrewery(data) {
-    console.log("breweries:", data);
+  handleGetBreweryDataSuccess(breweriesObj) {
+    this.display.updateBreweryTable(breweriesObj)
   }
 
   getEventData(city, stateCode) {
@@ -43,8 +43,7 @@ class App {
   }
 
   handleGetEventsDataSuccess(eventsObj) {
-    console.log("got event data:", eventsObj);
-    var events = eventsObj._embedded.events[0].name;
+    var events = eventsObj._embedded.events;
     this.display.updateEventsTable(events);
   }
 }

@@ -8,9 +8,10 @@ class Form {
     this.formElement.on("submit", this.handleSubmit);
   }
 
-  onSubmit(updatep2Header, getEventData) {
+  onSubmit(updatep2Header, getEventData, getBreweryData) {
     this.updatep2Header = updatep2Header;
     this.getEventData = getEventData;
+    this.getBreweryData = getBreweryData;
   }
 
   handleSubmit(event){
@@ -20,7 +21,6 @@ class Form {
     this.page1Element.addClass("d-none");
     this.updatep2Header(city, stateCode);
     this.getEventData(city, stateCode);
-
-
+    this.getBreweryData();
   }
 }
