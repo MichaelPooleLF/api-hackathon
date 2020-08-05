@@ -21,6 +21,6 @@ class Form {
     this.page1Element.addClass("d-none");
     this.updatep2Header(city, stateCode);
     this.getEventData(city, stateCode);
-    this.getBreweryData();
+    this.getBreweryData(city, stateCode);
   }
 }
