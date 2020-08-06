@@ -1,26 +1,29 @@
 class Form {
-  constructor(formElement, cityInput, stateInput, page1Element) {
+  constructor(formElement, page1Element) {
     this.formElement = formElement;
-    this.cityInput = cityInput;
-    this.stateInput = stateInput;
     this.page1Element = page1Element;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.formElement.on("submit", this.handleSubmit);
   }
 
-  onSubmit(updatep2Header, getEventData, getBreweryData) {
-    this.updatep2Header = updatep2Header;
+  onSubmit(showPage2, getEventData, getBreweryData) {
+    this.showPage2 = showPage2;
     this.getEventData = getEventData;
     this.getBreweryData = getBreweryData;
   }
 
   handleSubmit(event){
     event.preventDefault();
-    var city = this.cityInput.val();
-    var stateCode = this.stateInput.val();
+
+    var formData = new FormData(event.target);
+    this.city = formData.get("city");
+    this.stateCode = formData.get("stateCode");
+
     this.page1Element.addClass("d-none");
-    this.updatep2Header(city, stateCode);
-    this.getEventData(city, stateCode);
-    this.getBreweryData(city, stateCode);
+    this.showPage2();
+    this.getEventData(this.city, this.stateCode);
+    this.getBreweryData(this.city, this.stateCode);
   }
+
+  // handleHomeClick()
 }
