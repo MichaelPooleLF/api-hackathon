@@ -1,9 +1,12 @@
 class Display {
-  constructor(headerElement, eventsTable, breweryTable, page2Element) {
+  constructor(headerElement, eventsTable, breweryTable, page2Element,
+    eventsTableTitle, breweryTableTitle) {
     this.headerElement = headerElement;
     this.eventsTable = eventsTable;
     this.breweryTable = breweryTable;
     this.page2Element = page2Element;
+    this.eventsTableTitle = eventsTableTitle;
+    this.breweryTableTitle = breweryTableTitle;
     this.handleEventTableClick = this.handleEventTableClick.bind(this);
     this.eventsTable.on("click", this.handleEventTableClick);
     this.handleBreweryTableClick = this.handleBreweryTableClick.bind(this);
@@ -16,7 +19,6 @@ class Display {
   }
 
   updateEventsTable(events) {
-    console.log("Events",events);
     var namesArray = [];
     for (var i = 0; namesArray.length < 3; i++) {
       var eventName = events[i].name;
@@ -30,12 +32,10 @@ class Display {
   }
 
   handleEventTableClick(event) {
-    console.log("events Table", event.target);
     this.getEvent(event.target.getAttribute("id"));
   }
 
   updateBreweryTable(breweries) {
-    console.log("Breweries:", breweries);
     for (var i = 0; i < 3; i++) {
       var breweryName = breweries[i].name;
       var $td = $("<td>", { text:breweryName, id:breweries[i].id})
@@ -45,9 +45,8 @@ class Display {
   }
 
   handleBreweryTableClick(event) {
-    console.log(event.target);
-    var id = event.target.getAttribute("id")
+    var breweryId = event.target.getAttribute("id")
     var breweryName = event.target.textContent;
-    this.showBreweryModal(id, breweryName);
+    this.showBreweryModal(breweryId, breweryName);
   }
 }
