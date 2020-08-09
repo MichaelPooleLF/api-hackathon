@@ -3,6 +3,7 @@ class App {
     this.form = form;
     this.display = display
     this.modals = modals;
+    this.showPage1 = this.showPage1.bind(this);
     this.showPage2 = this.showPage2.bind(this);
     this.updateP2Text = this.updateP2Text.bind(this);
     this.getEventData = this.getEventData.bind(this);
@@ -16,7 +17,15 @@ class App {
 
   start(){
     this.form.onSubmit(this.showPage2, this.getEventData, this.getBreweryData);
-    this.display.onClick(this.getEvent, this.showBreweryModal);
+    this.display.onClick(this.getEvent, this.showBreweryModal, this.showPage1);
+  }
+
+  showPage1() {
+    this.form.page1Element.removeClass("d-none");
+    const city = this.form.formElement.find("#city");
+    const state = this.form.formElement.find("#stateCode")
+    city.val("");
+    state.val("AL");
   }
 
   showPage2() {
@@ -46,10 +55,9 @@ class App {
   }
 
   handleGetBreweryDataSuccess(breweriesArray) {
-    if(breweriesArray.length === 0) {
-      console.log("nothing here!");
-      return;
-    }
+    // if(breweriesArray.length === 0) {
+    //   return;
+    // }
     this.breweryCache = breweriesArray;
     this.display.updateBreweryTable(breweriesArray);
     this.updateP2Text(this.form.city, this.form.stateCode)
@@ -67,11 +75,12 @@ class App {
   }
 
   handleGetEventsDataSuccess(eventsObj) {
-    if (!eventsObj._embedded) {
-      console.log("nothing here!");
-      return;
+    // if (!eventsObj._embedded) {
+    //   return;
+    // }
+    if (eventsObj._embedded) {
+      var events = eventsObj._embedded.events;
     }
-    var events = eventsObj._embedded.events;
     this.display.updateEventsTable(events);
   }
 

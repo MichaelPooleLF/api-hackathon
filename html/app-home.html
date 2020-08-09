@@ -36,7 +36,15 @@
       <h1 class="col-6">NightOut</h1>
       <a class="home-button" href="#"><img src="../images/home-icon.svg" alt="home icon"></a>
     </nav>
-    <main class="row">
+    <main class="row error">
+      <header class="col-12">
+        <h2>
+          Whoops! Please Enter a Valid City/State Combination
+        </h2>
+      </header>
+      <button class="back-button" type="button">Back</button>
+    </main>
+    <main class="row success d-none">
       <header class="col-12">
         <h2>
           Whoops! Please Enter a Valid City/State Combination
@@ -94,7 +102,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
     integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
     crossorigin="anonymous"></script>
-  <script src="../js/fill-select-tag.js"></script>
+    <script src="../js/fill-select-tag.js"></script>
+    <script src="../js/error-display.js"></script>
   <script src="../js/modals.js"></script>
   <script src="../js/display.js"></script>
   <script src="../js/form.js"></script>

@@ -128,3 +128,11 @@ ul {
 h4, h2 {
   text-align: center;
 }
+
+.error {
+  justify-content: center;
+}
+
+.error button {
+  margin-top: 7rem;
+}

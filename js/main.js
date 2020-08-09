@@ -1,6 +1,6 @@
 var $formElement = $("form");
 var $page1Element = $(".page-1");
-var $headerElement = $("header > h2");
+var $headerElement = $("main.success header > h2");
 var $eventsTable = $(".events-table > tbody");
 var $breweryTable = $(".brewery-table > tbody");
 var $page2Element = $(".page-2");
@@ -10,12 +10,16 @@ var $eventsModal = $(".events-modal");
 var $breweriesModal = $(".breweries-modal");
 var $eventsModalButton = $(".events-modal button");
 var $breweriesModalButton = $(".breweries-modal button");
+var $homeButton = $(".page-2 a");
+var $errorPage = $("main.error");
+var $backButton = $(".error button");
 
+var errorDisplay = new ErrorDisplay($errorPage, $backButton);
 var modals = new Modals($eventsModal, $eventsModalButton, $breweriesModal, $breweriesModalButton);
 var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element,
-  $eventsTableTitle, $breweryTableTitle);
+  $eventsTableTitle, $breweryTableTitle, $homeButton);
 var form = new Form($formElement, $page1Element);
-var app = new App(form, display, modals);
+var app = new App(form, display, modals, errorDisplay);
 
 app.start();
 fillSelect(stateCodes);
