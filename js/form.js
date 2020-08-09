@@ -24,6 +24,4 @@ class Form {
     this.getEventData(this.city, this.stateCode);
     this.getBreweryData(this.city, this.stateCode);
   }
-
-  // handleHomeClick()
 }

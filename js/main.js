@@ -10,10 +10,11 @@ var $eventsModal = $(".events-modal");
 var $breweriesModal = $(".breweries-modal");
 var $eventsModalButton = $(".events-modal button");
 var $breweriesModalButton = $(".breweries-modal button");
+var $homeButton = $(".page-2 a");
 
 var modals = new Modals($eventsModal, $eventsModalButton, $breweriesModal, $breweriesModalButton);
 var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element,
-  $eventsTableTitle, $breweryTableTitle);
+  $eventsTableTitle, $breweryTableTitle, $homeButton);
 var form = new Form($formElement, $page1Element);
 var app = new App(form, display, modals);
 
