@@ -36,7 +36,16 @@ class Display {
   }
 
   updateBreweryTable(breweries) {
-    for (var i = 0; i < 3; i++) {
+    const length = (() => {
+      if (breweries.length > 3) {
+        return 3;
+      } else {
+        return breweries.length;
+      }
+    })();
+    console.log(length);
+    for (var i = 0; i < length; i++) {
+      console.log(breweries);
       var breweryName = breweries[i].name;
       var $td = $("<td>", { text:breweryName, id:breweries[i].id})
       var $tr = $("<tr>");
