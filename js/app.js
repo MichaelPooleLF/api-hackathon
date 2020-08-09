@@ -55,9 +55,9 @@ class App {
   }
 
   handleGetBreweryDataSuccess(breweriesArray) {
-    if(breweriesArray.length === 0) {
-      return;
-    }
+    // if(breweriesArray.length === 0) {
+    //   return;
+    // }
     this.breweryCache = breweriesArray;
     this.display.updateBreweryTable(breweriesArray);
     this.updateP2Text(this.form.city, this.form.stateCode)
@@ -75,10 +75,12 @@ class App {
   }
 
   handleGetEventsDataSuccess(eventsObj) {
-    if (!eventsObj._embedded) {
-      return;
+    // if (!eventsObj._embedded) {
+    //   return;
+    // }
+    if (eventsObj._embedded) {
+      var events = eventsObj._embedded.events;
     }
-    var events = eventsObj._embedded.events;
     this.display.updateEventsTable(events);
   }
 

@@ -23,9 +23,19 @@ class Display {
   }
 
   updateEventsTable(events) {
-    var namesArray = [];
     this.eventsTable.empty();
-    for (var i = 0; namesArray.length < 3; i++) {
+    if(!event.length) {
+      return;
+    }
+    const length = (() => {
+      if (events.length > 3) {
+        return 3;
+      } else {
+        return events.length;
+      }
+    })();
+    var namesArray = [];
+    for (var i = 0; namesArray.length < length; i++) {
       var eventName = events[i].name;
       if (namesArray.indexOf(eventName) === -1) {
         namesArray.push(eventName);
