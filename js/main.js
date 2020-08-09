@@ -11,8 +11,8 @@ var $breweriesModal = $(".breweries-modal");
 var $eventsModalButton = $(".events-modal button");
 var $breweriesModalButton = $(".breweries-modal button");
 var $homeButton = $(".page-2 a");
-var $errorPage = $("main.error");
-var $backButton = $(".error button");
+var $errorPage = $(".error-page");
+var $backButton = $(".error-page button");
 
 var errorDisplay = new ErrorDisplay($errorPage, $backButton);
 var modals = new Modals($eventsModal, $eventsModalButton, $breweriesModal, $breweriesModalButton);
