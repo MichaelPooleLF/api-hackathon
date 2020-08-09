@@ -1,8 +1,9 @@
 class App {
-  constructor(form, display, modals){
+  constructor(form, display, modals, errorDisplay){
     this.form = form;
     this.display = display
     this.modals = modals;
+    this.errorDisplay = errorDisplay;
     this.showPage1 = this.showPage1.bind(this);
     this.showPage2 = this.showPage2.bind(this);
     this.updateP2Text = this.updateP2Text.bind(this);
@@ -18,6 +19,7 @@ class App {
   start(){
     this.form.onSubmit(this.showPage2, this.getEventData, this.getBreweryData);
     this.display.onClick(this.getEvent, this.showBreweryModal, this.showPage1);
+    this.errorDisplay.onClick(this.showPage1);
   }
 
   showPage1() {
@@ -55,9 +57,11 @@ class App {
   }
 
   handleGetBreweryDataSuccess(breweriesArray) {
-    // if(breweriesArray.length === 0) {
-    //   return;
-    // }
+    if(breweriesArray.length === 0) {
+      this.errorDisplay.errorPage.removeClass("d-none")
+      return;
+    }
+    this.showPage2();
     this.breweryCache = breweriesArray;
     this.display.updateBreweryTable(breweriesArray);
     this.updateP2Text(this.form.city, this.form.stateCode)
@@ -75,9 +79,6 @@ class App {
   }
 
   handleGetEventsDataSuccess(eventsObj) {
-    // if (!eventsObj._embedded) {
-    //   return;
-    // }
     if (eventsObj._embedded) {
       var events = eventsObj._embedded.events;
     }

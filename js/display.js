@@ -24,7 +24,10 @@ class Display {
 
   updateEventsTable(events) {
     this.eventsTable.empty();
-    if(!event.length) {
+    if(!events) {
+      var $td = $("<td>", { text: "No Events Found"})
+      var $tr = $("<tr>");
+      this.eventsTable.append($tr.append($td));
       return;
     }
     const length = (() => {
