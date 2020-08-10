@@ -71,15 +71,31 @@ header {
   margin-top: 1rem;
 }
 
+tr {
+  border: none;
+}
+
 td {
   text-align: center;
   color: white;
+  border: none;
+  transition: background-color 0.5s,
+              color 0.5s,
+              scale 0.5s;
 }
 
 .page-2 div {
   display: flex;
   justify-content: center;
   margin-top: 0.8rem;
+}
+
+.page-2 a, button {
+  transition: transform 0.5s;
+}
+
+.page-2 a:hover, button:hover {
+  transform: scale(1.1);
 }
 
 h3 {
@@ -89,6 +105,7 @@ h3 {
 .my-modal, .iframe {
   position: fixed;
   height: 100vh;
+  max-width: initial;
   top: 0;
   right: 0;
   left: 0;
@@ -96,6 +113,7 @@ h3 {
   color: black;
   display: flex;
   align-items: center;
+  background-color: rgba(169, 169, 169, 0.7)
 }
 
 .my-modal .row, .iframe .row {
@@ -157,4 +175,12 @@ iframe {
   position: absolute;
   right: 6px;
   top: 3px;
+}
+
+td:hover {
+  background-color: lightgray;
+  color: black;
+  cursor: pointer;
+  transform: scale(1.015);
+  border-radius: 10px;
 }
