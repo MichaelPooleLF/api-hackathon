@@ -15,7 +15,6 @@ class App {
     this.getEvent = this.getEvent.bind(this);
     this.populateEventsModal = this.populateEventsModal.bind(this);
     this.populateBreweryModal = this.populateBreweryModal.bind(this);
-    this.showIframe = this.showIframe.bind(this);
     this.showEventsModal = this.showEventsModal.bind(this);
     this.showBreweryModal = this.showBreweryModal.bind(this);
   }
@@ -24,7 +23,6 @@ class App {
     this.form.onSubmit(this.showPage2, this.getEventData, this.getBreweryData);
     this.display.onClick(this.getEvent, this.populateBreweryModal, this.showPage1);
     this.errorDisplay.onClick(this.showPage1);
-    this.iframe.onClick(this.showEventsModal, this.showBreweryModal);
   }
 
   showPage1() {
@@ -112,15 +110,12 @@ class App {
     var address = $liElements[0];
     var startDate = $liElements[1];
     var $website = this.modals.eventModal.find("a");
-    var $setIframeSrc = this.iframe.iframe.find("iframe");
 
     this.showEventsModal();
     $h4Element.text(event.name);
     address.textContent = "Where: " + event._embedded.venues[0].name;
     startDate.textContent = "When: " + event.dates.start.localDate;
-    $website.on("click", this.showIframe);
-    $setIframeSrc.attr("src", event.url);
-
+    $website.attr("href", event.url);
   }
 
   showBreweryModal() {
@@ -136,7 +131,6 @@ class App {
     var address = $liElements[0];
     var type = $liElements[1];
     var $website = this.modals.breweriesModal.find("a");
-    var $setIframeSrc = this.iframe.iframe.find("iframe");
 
     this.showBreweryModal();
     for (var i = 0; i < this.breweryCache.length; i++) {
@@ -149,18 +143,6 @@ class App {
     $h4Element.text(breweryName);
     address.textContent = "Where: " + cachedAddress;
     type.textContent = "Brewery Type: " + cachedType;
-    $website.on("click", this.showIframe);
-    $setIframeSrc.attr("src", cachedWebsite);
-  }
-
-  showIframe(event) {
-    event.preventDefault();
-    this.iframe.currentModal = event.currentTarget.className;
-    if (this.iframe.currentModal === "brewery-link") {
-      this.modals.hideBreweriesModal();
-    } else if (this.iframe.currentModal === "event-link") {
-      this.modals.hideEventModal();
-    }
-    this.iframe.iframe.removeClass("d-none");
+    $website.attr("href", cachedWebsite);
   }
 }
