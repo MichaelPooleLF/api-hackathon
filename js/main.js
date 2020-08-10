@@ -21,16 +21,12 @@ var $breweriesModalButton = $(".breweries-modal button");
 var $errorPage = $(".error-page");
 var $backButton = $(".error-page button");
 
-// selectors for iframe
-var $iframe = $(".iframe");
-
-var iframe = new Iframe($iframe);
 var errorDisplay = new ErrorDisplay($errorPage, $backButton);
 var modals = new Modals($eventsModal, $eventsModalButton, $breweriesModal, $breweriesModalButton);
 var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element,
   $eventsTableTitle, $breweryTableTitle, $homeButton);
 var form = new Form($formElement, $page1Element);
-var app = new App(form, display, modals, errorDisplay, iframe);
+var app = new App(form, display, modals, errorDisplay);
 
 app.start();
 fillSelect(stateCodes);
