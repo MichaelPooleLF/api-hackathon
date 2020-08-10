@@ -28,8 +28,10 @@ class Display {
       var $td = $("<td>", { text: "No Events Found"})
       var $tr = $("<tr>");
       this.eventsTable.append($tr.append($td));
+      this.eventsTable.off("click", this.handleEventTableClick);
       return;
     }
+    this.eventsTable.on("click", this.handleEventTableClick);
     const length = (() => {
       if (events.length > 3) {
         return 3;
