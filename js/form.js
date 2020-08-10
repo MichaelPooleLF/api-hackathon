@@ -20,7 +20,6 @@ class Form {
     this.stateCode = formData.get("stateCode");
 
     this.page1Element.addClass("d-none");
-    // this.showPage2();
     this.getEventData(this.city, this.stateCode);
     this.getBreweryData(this.city, this.stateCode);
   }
