@@ -86,7 +86,7 @@ h3 {
   font-size: 24px;
 }
 
-.my-modal {
+.my-modal, .iframe {
   position: fixed;
   height: 100vh;
   top: 0;
@@ -98,7 +98,7 @@ h3 {
   align-items: center;
 }
 
-.my-modal .row {
+.my-modal .row, .iframe .row {
   justify-content: center;
 }
 
@@ -135,4 +135,26 @@ h4, h2 {
 
 .error-page button {
   margin-top: 7rem;
+}
+
+.iframe .row{
+  height: 80vh;
+  margin-top: 2rem;
+}
+
+.iframe-wrapper {
+  position: relative;
+  display: flex;
+  background-color: white;
+  padding: 1rem;
+}
+
+iframe {
+  width: 100%;
+}
+
+.iframe a {
+  position: absolute;
+  right: 6px;
+  top: 2px;
 }
