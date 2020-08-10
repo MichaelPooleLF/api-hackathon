@@ -39,7 +39,9 @@
     <main class="row">
       <header class="col-12">
         <h2>
-          Whoops! Please Enter a Valid City/State Combination
+          Sorry, no event/brewery data was found for that combination. <br>
+          <br>
+          Please enter a new City/State combination.
         </h2>
       </header>
       <button class="back-button" type="button">Back</button>
@@ -83,7 +85,7 @@
         <ul>
           <li>Address</li>
           <li>Start Date</li>
-          <li><a href="#">Learn More</a></li>
+          <li><a class="event-link" href="#">Learn More</a></li>
         </ul>
         <button type="button" class="btn btn-dark">Ok</button>
       </div>
@@ -99,19 +101,18 @@
         <ul>
           <li>Address</li>
           <li>Type</li>
-          <li><a href="#">Visit Their Website</a></li>
+          <li><a class="brewery-link" href="#">Visit Their Website</a></li>
         </ul>
         <button type="button" class="btn btn-dark">Ok</button>
       </div>
     </div>
   </div>
 
-  <div class="iframe container">
+  <div class="iframe container d-none">
     <div class="row">
       <div class="col-10 iframe-wrapper">
         <a href='#'>X</a>
-        <iframe src="https://www.ticketmaster.com/search?radius=75&sort=date%2Casc&unit=miles&tab=events&daterange=all"
-        frameborder="0" ></iframe>
+        <iframe src="" frameborder="0" ></iframe>
       </div>
     </div>
   </div>
@@ -119,8 +120,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
     integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
     crossorigin="anonymous"></script>
-    <script src="../js/fill-select-tag.js"></script>
-    <script src="../js/error-display.js"></script>
+  <script src="../js/iframe.js"></script>
+  <script src="../js/fill-select-tag.js"></script>
+  <script src="../js/error-display.js"></script>
   <script src="../js/modals.js"></script>
   <script src="../js/display.js"></script>
   <script src="../js/form.js"></script>
