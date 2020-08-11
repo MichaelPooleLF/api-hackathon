@@ -32,4 +32,4 @@ Try the application live at [https://michaelpoolelf.github.io/api-hackathon/](ht
 git clone https://github.com/MichaelPooleLF/api-hackathon.git
 ```
 2. Open the file through a code editor and open default browser from ```index.html``` file.
-    ```
+  
