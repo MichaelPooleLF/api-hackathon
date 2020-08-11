@@ -25,14 +25,6 @@ Try the application live at [https://michaelpoolelf.github.io/api-hackathon/](ht
 
 ![NightOut JS](assets/nightout-preview.gif)
 
-## Development
-
-### System Requirements
-
-- Node.js 10 or higher
-- NPM 6 or higher
-- MongoDB 4 or higher
-
 ## Getting Started
 
 1. Clone the repository.
