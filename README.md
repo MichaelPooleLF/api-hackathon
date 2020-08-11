@@ -5,10 +5,12 @@ A front-end javaScript application to look up events and breweries by city and s
 ## Technologies Used
 
 - Bootstrap 4
-- HTML5
-- CSS3
+- HTML 5
+- CSS 3
 - JavaScript
-- jQuery
+- jQuery AJAX
+- OOP
+- Open Brewery DB and Ticketmaster Discovery APIs
 
 ## Live Demo
 
