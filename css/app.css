@@ -12,6 +12,10 @@ body {
   body {
     height: 100%;
   }
+
+  main {
+    margin-bottom: 5rem;
+  }
 }
 
 @media (min-width: 900px) {
