@@ -1,6 +1,6 @@
 class Display {
   constructor(headerElement, eventsTable, breweryTable, page2Element,
-    eventsTableTitle, breweryTableTitle, homeButton) {
+    eventsTableTitle, breweryTableTitle, homeButton, loadingScreen) {
     this.headerElement = headerElement;
     this.eventsTable = eventsTable;
     this.breweryTable = breweryTable;
@@ -8,6 +8,7 @@ class Display {
     this.eventsTableTitle = eventsTableTitle;
     this.breweryTableTitle = breweryTableTitle;
     this.homeButton = homeButton;
+    this.loadingScreen = loadingScreen;
     this.handleEventTableClick = this.handleEventTableClick.bind(this);
     this.eventsTable.on("click", this.handleEventTableClick);
     this.handleBreweryTableClick = this.handleBreweryTableClick.bind(this);

@@ -26,6 +26,10 @@ body {
   body {
     height: 100vh;
   }
+
+  .loading-icon {
+    width: 25%;
+  }
 }
 
 h1 {
@@ -203,4 +207,21 @@ td:hover {
   cursor: pointer;
   transform: scale(1.015);
   border-radius: 10px;
+}
+
+.loading-icon {
+  color: white;
+  width: 250px;
+  height: auto;
+  animation: spin 4s linear infinite ;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
 }

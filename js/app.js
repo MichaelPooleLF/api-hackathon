@@ -39,7 +39,7 @@ class App {
   }
 
   showError() {
-    console.log("from show");
+    this.display.loadingScreen.addClass("d-none");
     this.errorDisplay.serverError.removeClass("d-none");
   }
 
@@ -56,6 +56,7 @@ class App {
         stateName += stateCodes[property].name;
       }
     }
+    this.display.loadingScreen.removeClass("d-none");
     $.ajax({
       method: "GET",
       url: "https://api.openbrewerydb.org/breweries?by_city=" + city +
@@ -65,15 +66,13 @@ class App {
     });
   }
 
-  handleGetBreweryDataError(error) {
-    console.log("from method", error);
-  }
-
   handleGetBreweryDataSuccess(breweriesArray) {
     if(breweriesArray.length === 0) {
-      this.errorDisplay.errorPage.removeClass("d-none")
+      this.display.loadingScreen.addClass("d-none");
+      this.errorDisplay.errorPage.removeClass("d-none");
       return;
     }
+    this.display.loadingScreen.addClass("d-none");
     this.showPage2();
     this.breweryCache = breweriesArray;
     this.display.updateBreweryTable(breweriesArray);
