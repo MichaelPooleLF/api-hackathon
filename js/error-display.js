@@ -1,6 +1,7 @@
 class ErrorDisplay {
-  constructor(errorPage, backButton) {
+  constructor(errorPage, serverError, backButton) {
     this.errorPage = errorPage;
+    this.serverError = serverError;
     this.backButton = backButton;
     this.handleBackButton = this.handleBackButton.bind(this);
     this.backButton.on("click", this.handleBackButton);
@@ -11,7 +12,12 @@ class ErrorDisplay {
   }
 
   handleBackButton(event) {
-    this.errorPage.addClass("d-none");
+    if (!this.errorPage.hasClass("d-none")) {
+      this.errorPage.addClass("d-none");
+    }
+    if (!this.serverError.hasClass("d-none")) {
+      this.serverError.addClass("d-none");
+    }
     this.showPage1();
   }
 }

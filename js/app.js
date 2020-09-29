@@ -7,12 +7,12 @@ class App {
     this.iframe = iframe;
     this.showPage1 = this.showPage1.bind(this);
     this.showPage2 = this.showPage2.bind(this);
+    this.showError = this.showError.bind(this);
     this.updateP2Text = this.updateP2Text.bind(this);
     this.getEventData = this.getEventData.bind(this);
     this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
     this.getBreweryData = this.getBreweryData.bind(this);
     this.handleGetBreweryDataSuccess = this.handleGetBreweryDataSuccess.bind(this);
-    this.getEvent = this.getEvent.bind(this);
     this.populateEventsModal = this.populateEventsModal.bind(this);
     this.populateBreweryModal = this.populateBreweryModal.bind(this);
     this.showEventsModal = this.showEventsModal.bind(this);
@@ -21,7 +21,7 @@ class App {
 
   start(){
     this.form.onSubmit(this.showPage2, this.getEventData, this.getBreweryData);
-    this.display.onClick(this.getEvent, this.populateBreweryModal, this.showPage1);
+    this.display.onClick(this.populateBreweryModal, this.populateEventsModal, this.showPage1);
     this.errorDisplay.onClick(this.showPage1);
   }
 
@@ -37,6 +37,11 @@ class App {
     this.display.page2Element.removeClass("d-none");
   }
 
+  showError() {
+    this.display.loadingScreen.addClass("d-none");
+    this.errorDisplay.serverError.removeClass("d-none");
+  }
+
   updateP2Text(city, stateCode) {
     this.display.headerElement.text(city + ", " + stateCode);
     this.display.eventsTableTitle.text("Local Events");
@@ -50,20 +55,23 @@ class App {
         stateName += stateCodes[property].name;
       }
     }
+    this.display.loadingScreen.removeClass("d-none");
     $.ajax({
       method: "GET",
       url: "https://api.openbrewerydb.org/breweries?by_city=" + city +
       "&by_state=" + stateName,
-      error: console.log,
+      error: this.showError,
       success: this.handleGetBreweryDataSuccess
     });
   }
 
   handleGetBreweryDataSuccess(breweriesArray) {
     if(breweriesArray.length === 0) {
-      this.errorDisplay.errorPage.removeClass("d-none")
+      this.display.loadingScreen.addClass("d-none");
+      this.errorDisplay.errorPage.removeClass("d-none");
       return;
     }
+    this.display.loadingScreen.addClass("d-none");
     this.showPage2();
     this.breweryCache = breweriesArray;
     this.display.updateBreweryTable(breweriesArray);
@@ -84,27 +92,19 @@ class App {
   handleGetEventsDataSuccess(eventsObj) {
     if (eventsObj._embedded) {
       var events = eventsObj._embedded.events;
+      this.eventsCache = events;
     }
     this.display.updateEventsTable(events);
-  }
-
-  getEvent(id) {
-    var apikey = "apikey=g8k9ENDeCGfdNGKiIo89wTNGIwGEMYIv";
-    $.ajax({
-      method: "GET",
-      url: "https://app.ticketmaster.com/discovery/v2/events.json?id=" +
-      id + "&" + apikey,
-      error: console.log,
-      success: this.populateEventsModal
-    })
   }
 
   showEventsModal() {
     this.modals.eventModal.removeClass("d-none");
   }
 
-  populateEventsModal(data) {
-    var event = data._embedded.events[0];
+  populateEventsModal(eventId, eventName) {
+    var cachedAddress = "";
+    var cachedStartDate = "";
+    var cachedWebsite = "";
     var $h4Element = this.modals.eventModal.find("h4");
     var $liElements = this.modals.eventModal.find("li");
     var address = $liElements[0];
@@ -112,10 +112,18 @@ class App {
     var $website = this.modals.eventModal.find("a");
 
     this.showEventsModal();
-    $h4Element.text(event.name);
-    address.textContent = "Where: " + event._embedded.venues[0].name;
-    startDate.textContent = "When: " + event.dates.start.localDate;
-    $website.attr("href", event.url);
+    for (var i = 0; i < this.eventsCache.length; i++) {
+      if (this.eventsCache[i].id === eventId) {
+        cachedAddress = this.eventsCache[i]._embedded.venues[0].name;
+        cachedStartDate = this.eventsCache[i].dates.start.localDate;
+        cachedWebsite = this.eventsCache[i].url;
+      }
+    }
+
+    $h4Element.text(eventName);
+    address.textContent = "Where: " + cachedAddress;
+    startDate.textContent = "When: " + cachedStartDate;
+    $website.attr("href", cachedWebsite);
   }
 
   showBreweryModal() {

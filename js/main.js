@@ -10,6 +10,7 @@ var $page2Element = $(".page-2");
 var $eventsTableTitle = $(".events-table-title");
 var $breweryTableTitle = $(".brewery-table-title");
 var $homeButton = $(".page-2 a");
+var $loadingScreen = $(".loading-screen");
 
 // selectors for modals
 var $eventsModal = $(".events-modal");
@@ -19,12 +20,13 @@ var $breweriesModalButton = $(".breweries-modal button");
 
 // selectors for errorDisplay
 var $errorPage = $(".error-page");
-var $backButton = $(".error-page button");
+var $serverError = $(".server-error");
+var $backButton = $(".back-button");
 
-var errorDisplay = new ErrorDisplay($errorPage, $backButton);
+var errorDisplay = new ErrorDisplay($errorPage, $serverError, $backButton);
 var modals = new Modals($eventsModal, $eventsModalButton, $breweriesModal, $breweriesModalButton);
 var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element,
-  $eventsTableTitle, $breweryTableTitle, $homeButton);
+  $eventsTableTitle, $breweryTableTitle, $homeButton, $loadingScreen);
 var form = new Form($formElement, $page1Element);
 var app = new App(form, display, modals, errorDisplay);
 
