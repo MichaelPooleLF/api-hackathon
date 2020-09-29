@@ -17,9 +17,9 @@ class Display {
     this.homeButton.on("click", this.handleHomeButtonClick);
   }
 
-  onClick(getEvent, showBreweryModal, showPage1) {
-    this.getEvent = getEvent;
+  onClick(showBreweryModal, showEventsModal, showPage1) {
     this.showBreweryModal = showBreweryModal;
+    this.showEventsModal = showEventsModal;
     this.showPage1 = showPage1;
   }
 
@@ -53,7 +53,9 @@ class Display {
   }
 
   handleEventTableClick(event) {
-    this.getEvent(event.target.getAttribute("id"));
+    var eventId = event.target.getAttribute("id");
+    var eventName = event.target.textContent;
+    this.showEventsModal(eventId, eventName);
   }
 
   updateBreweryTable(breweries) {

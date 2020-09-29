@@ -126,7 +126,7 @@ h3 {
   font-size: 24px;
 }
 
-.my-modal, .iframe {
+.my-modal, .iframe, .modal-loader {
   position: fixed;
   height: 100vh;
   max-width: initial;
@@ -137,7 +137,11 @@ h3 {
   color: black;
   display: flex;
   align-items: center;
-  background-color: rgba(169, 169, 169, 0.7)
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.modal-loader {
+  color: white;
 }
 
 .my-modal .row, .iframe .row {

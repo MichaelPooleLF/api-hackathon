@@ -16,7 +16,6 @@ class ErrorDisplay {
       this.errorPage.addClass("d-none");
     }
     if (!this.serverError.hasClass("d-none")) {
-      console.log("from handle back if");
       this.serverError.addClass("d-none");
     }
     this.showPage1();
