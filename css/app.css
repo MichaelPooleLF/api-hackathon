@@ -16,6 +16,10 @@ body {
   main {
     margin-bottom: 5rem;
   }
+
+  form.my-form {
+    margin-top: 2rem;
+  }
 }
 
 @media (min-width: 900px) {
@@ -163,11 +167,11 @@ h4, h2 {
   text-align: center;
 }
 
-.error-page main.row {
+.error-page main.row, .server-error main.row {
   justify-content: center;
 }
 
-.error-page button {
+.back-button {
   margin-top: 3rem;
 }
 

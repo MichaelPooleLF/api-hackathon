@@ -19,9 +19,10 @@ var $breweriesModalButton = $(".breweries-modal button");
 
 // selectors for errorDisplay
 var $errorPage = $(".error-page");
-var $backButton = $(".error-page button");
+var $serverError = $(".server-error");
+var $backButton = $(".back-button");
 
-var errorDisplay = new ErrorDisplay($errorPage, $backButton);
+var errorDisplay = new ErrorDisplay($errorPage, $serverError, $backButton);
 var modals = new Modals($eventsModal, $eventsModalButton, $breweriesModal, $breweriesModalButton);
 var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element,
   $eventsTableTitle, $breweryTableTitle, $homeButton);

@@ -16,7 +16,7 @@
       <h1 class="col-6">NightOut</h1>
     </nav>
     <main class="row">
-      <form class="col-10 offset-1" action="#">
+      <form class="col-10 offset-1 my-form" action="#">
         <div class="form-group">
           <label for="city">City</label>
           <input type="text" class="form-control" name="city" id="city" required>
@@ -40,6 +40,24 @@
           Sorry, no event/brewery data was found for that combination. <br>
           <br>
           Please enter a new City/State combination.
+        </h2>
+      </header>
+      <button class="back-button" type="button">Back</button>
+    </main>
+  </div>
+
+  <div class="server-error container d-none">
+    <nav class="row">
+      <h1 class="col-6">NightOut</h1>
+    </nav>
+    <main class="row">
+      <header class="col-12">
+        <h2>
+          Sorry, an unexpected error occurred and we could not retrieve the information
+          you requested.
+          <br>
+          <br>
+          Please return to the home page and try again.
         </h2>
       </header>
       <button class="back-button" type="button">Back</button>

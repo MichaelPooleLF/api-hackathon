@@ -7,6 +7,7 @@ class App {
     this.iframe = iframe;
     this.showPage1 = this.showPage1.bind(this);
     this.showPage2 = this.showPage2.bind(this);
+    this.showError = this.showError.bind(this);
     this.updateP2Text = this.updateP2Text.bind(this);
     this.getEventData = this.getEventData.bind(this);
     this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
@@ -37,6 +38,11 @@ class App {
     this.display.page2Element.removeClass("d-none");
   }
 
+  showError() {
+    console.log("from show");
+    this.errorDisplay.serverError.removeClass("d-none");
+  }
+
   updateP2Text(city, stateCode) {
     this.display.headerElement.text(city + ", " + stateCode);
     this.display.eventsTableTitle.text("Local Events");
@@ -54,9 +60,13 @@ class App {
       method: "GET",
       url: "https://api.openbrewerydb.org/breweries?by_city=" + city +
       "&by_state=" + stateName,
-      error: console.log,
+      error: this.showError,
       success: this.handleGetBreweryDataSuccess
     });
+  }
+
+  handleGetBreweryDataError(error) {
+    console.log("from method", error);
   }
 
   handleGetBreweryDataSuccess(breweriesArray) {
