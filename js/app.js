@@ -7,7 +7,6 @@ class App {
     this.showPage1 = this.showPage1.bind(this);
     this.showPage2 = this.showPage2.bind(this);
     this.showError = this.showError.bind(this);
-    this.updateP2Text = this.updateP2Text.bind(this);
     this.getEventData = this.getEventData.bind(this);
     this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
     this.getBreweryData = this.getBreweryData.bind(this);
@@ -39,17 +38,10 @@ class App {
     this.errorDisplay.serverError.removeClass("d-none");
   }
 
-  updateP2Text(city, stateCode) {
-    this.display.headerElement.text(city + ", " + stateCode);
-    this.display.eventsTable.title.text("Local Events");
-    this.display.breweryTable.title.text("Local Breweries");
-  }
-
   getBreweryData(city, stateCode){
     var stateName = "";
     for (var property in stateCodes) { // stateCodes is defined in fill-select-tag.js
       if (stateCode === stateCodes[property].abbreviation) {
-        console.log("from success");
         stateName += stateCodes[property].name;
       }
     }
@@ -74,7 +66,7 @@ class App {
     this.breweryCache = breweriesArray;
     this.modals.breweriesModal.brewCache = breweriesArray;
     this.display.breweryTable.updateTable(breweriesArray);
-    this.updateP2Text(this.form.city, this.form.stateCode)
+    this.display.updateP2Text(this.form.city, this.form.stateCode)
   }
 
   getEventData(city, stateCode) {

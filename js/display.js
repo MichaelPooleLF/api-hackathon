@@ -14,6 +14,12 @@ class Display {
     this.showPage1 = showPage1;
   }
 
+  updateP2Text(city, stateCode) {
+    this.headerElement.text(city + ", " + stateCode);
+    this.eventsTable.title.text("Local Events");
+    this.breweryTable.title.text("Local Breweries");
+  }
+
   handleHomeButtonClick(event) {
     this.page2Element.addClass("d-none");
     this.showPage1();
