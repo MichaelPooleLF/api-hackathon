@@ -97,18 +97,18 @@ class App {
   }
 
   showEventsModal() {
-    this.modals.eventModal.removeClass("d-none");
+    this.modals.eventModal.display.removeClass("d-none");
   }
 
   populateEventsModal(eventId, eventName) {
     var cachedAddress = "";
     var cachedStartDate = "";
     var cachedWebsite = "";
-    var $h4Element = this.modals.eventModal.find("h4");
-    var $liElements = this.modals.eventModal.find("li");
+    var $h4Element = this.modals.eventModal.display.find("h4");
+    var $liElements = this.modals.eventModal.display.find("li");
     var address = $liElements[0];
     var startDate = $liElements[1];
-    var $website = this.modals.eventModal.find("a");
+    var $website = this.modals.eventModal.display.find("a");
 
     this.showEventsModal();
     for (var i = 0; i < this.eventsCache.length; i++) {
@@ -126,18 +126,18 @@ class App {
   }
 
   showBreweryModal() {
-    this.modals.breweriesModal.removeClass("d-none");
+    this.modals.breweriesModal.display.removeClass("d-none");
   }
 
   populateBreweryModal(breweryId, breweryName) {
     var cachedAddress = "";
     var cachedType = "";
     var cachedWebsite = "";
-    var $h4Element = this.modals.breweriesModal.find("h4");
-    var $liElements = this.modals.breweriesModal.find("li");
+    var $h4Element = this.modals.breweriesModal.display.find("h4");
+    var $liElements = this.modals.breweriesModal.display.find("li");
     var address = $liElements[0];
     var type = $liElements[1];
-    var $website = this.modals.breweriesModal.find("a");
+    var $website = this.modals.breweriesModal.display.find("a");
 
     this.showBreweryModal();
     for (var i = 0; i < this.breweryCache.length; i++) {
