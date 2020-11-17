@@ -47,8 +47,9 @@ class App {
 
   getBreweryData(city, stateCode){
     var stateName = "";
-    for (var property in stateCodes) {
+    for (var property in stateCodes) { // stateCodes is defined in fill-select-tag.js
       if (stateCode === stateCodes[property].abbreviation) {
+        console.log("from success");
         stateName += stateCodes[property].name;
       }
     }
