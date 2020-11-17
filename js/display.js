@@ -9,8 +9,8 @@ class Display {
     this.homeButton.on("click", this.handleHomeButtonClick);
   }
 
-  onClick(showPage1) {
-    this.showPage1 = showPage1;
+  onClick(showHomePage) {
+    this.showHomePage = showHomePage;
   }
 
   showTables() {
@@ -25,6 +25,6 @@ class Display {
 
   handleHomeButtonClick(event) {
     this.page2Element.addClass("d-none");
-    this.showPage1();
+    this.showHomePage();
   }
 }

@@ -8,8 +8,8 @@ class ErrorDisplay {
     this.serverError.on("click", this.handleBackButton);
   }
 
-  onClick(showPage1) {
-    this.showPage1 = showPage1;
+  onClick(showHomePage) {
+    this.showHomePage = showHomePage;
   }
 
   showError(type) {
@@ -25,6 +25,6 @@ class ErrorDisplay {
     if (!currentTarget.classList.contains("d-none")) {
       currentTarget.classList.add("d-none");
     }
-    this.showPage1();
+    this.showHomePage();
   }
 }
