@@ -1,10 +1,9 @@
 class App {
-  constructor(form, display, modals, errorDisplay, iframe){
+  constructor(form, display, modals, errorDisplay){
     this.form = form;
     this.display = display
     this.modals = modals;
     this.errorDisplay = errorDisplay;
-    this.iframe = iframe;
     this.showPage1 = this.showPage1.bind(this);
     this.showPage2 = this.showPage2.bind(this);
     this.showError = this.showError.bind(this);
