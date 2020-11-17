@@ -74,7 +74,7 @@ class App {
     this.showPage2();
     this.breweryCache = breweriesArray;
     this.modals.breweriesModal.brewCache = breweriesArray;
-    this.display.updateBreweryTable(breweriesArray);
+    this.display.breweryTable.updateTable(breweriesArray);
     this.updateP2Text(this.form.city, this.form.stateCode)
   }
 
@@ -95,7 +95,7 @@ class App {
       this.eventsCache = events;
       this.modals.eventModal.eventsCache = events;
     }
-    this.display.updateEventsTable(events);
+    this.display.eventsTable.updateTable(events);
   }
 
   populateEventsModal(eventId, eventName) {
