@@ -14,13 +14,13 @@ class App {
     this.handleGetBreweryDataSuccess = this.handleGetBreweryDataSuccess.bind(this);
     this.populateEventsModal = this.populateEventsModal.bind(this);
     this.populateBreweryModal = this.populateBreweryModal.bind(this);
-    this.showEventsModal = this.showEventsModal.bind(this);
-    this.showBreweryModal = this.showBreweryModal.bind(this);
   }
 
   start(){
     this.form.onSubmit(this.showPage2, this.getEventData, this.getBreweryData);
-    this.display.onClick(this.populateBreweryModal, this.populateEventsModal, this.showPage1);
+    this.display.eventsTable.onClick(this.modals.eventModal.populateModal);
+    this.display.breweryTable.onClick(this.modals.breweriesModal.populateModal);
+    this.display.onClick(this.showPage1);
     this.errorDisplay.onClick(this.showPage1);
   }
 
@@ -73,6 +73,7 @@ class App {
     this.display.loadingScreen.addClass("d-none");
     this.showPage2();
     this.breweryCache = breweriesArray;
+    this.modals.breweriesModal.brewCache = breweriesArray;
     this.display.updateBreweryTable(breweriesArray);
     this.updateP2Text(this.form.city, this.form.stateCode)
   }
@@ -92,12 +93,9 @@ class App {
     if (eventsObj._embedded) {
       var events = eventsObj._embedded.events;
       this.eventsCache = events;
+      this.modals.eventModal.eventsCache = events;
     }
     this.display.updateEventsTable(events);
-  }
-
-  showEventsModal() {
-    this.modals.eventModal.display.removeClass("d-none");
   }
 
   populateEventsModal(eventId, eventName) {
@@ -110,7 +108,7 @@ class App {
     var startDate = $liElements[1];
     var $website = this.modals.eventModal.display.find("a");
 
-    this.showEventsModal();
+    this.modals.eventModal.showModal();
     for (var i = 0; i < this.eventsCache.length; i++) {
       if (this.eventsCache[i].id === eventId) {
         cachedAddress = this.eventsCache[i]._embedded.venues[0].name;
@@ -125,10 +123,6 @@ class App {
     $website.attr("href", cachedWebsite);
   }
 
-  showBreweryModal() {
-    this.modals.breweriesModal.display.removeClass("d-none");
-  }
-
   populateBreweryModal(breweryId, breweryName) {
     var cachedAddress = "";
     var cachedType = "";
@@ -139,7 +133,7 @@ class App {
     var type = $liElements[1];
     var $website = this.modals.breweriesModal.display.find("a");
 
-    this.showBreweryModal();
+    this.modals.breweriesModal.showModal();
     for (var i = 0; i < this.breweryCache.length; i++) {
       if (this.breweryCache[i].id === parseInt(breweryId)) {
         cachedAddress = this.breweryCache[i].street;
@@ -147,6 +141,7 @@ class App {
         cachedWebsite = this.breweryCache[i].website_url;
       }
     }
+
     $h4Element.text(breweryName);
     address.textContent = "Where: " + cachedAddress;
     type.textContent = "Brewery Type: " + cachedType;

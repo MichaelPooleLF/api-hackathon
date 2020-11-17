@@ -6,17 +6,11 @@ class Display {
     this.page2Element = page2Element;
     this.homeButton = homeButton;
     this.loadingScreen = loadingScreen;
-    this.handleEventTableClick = this.handleEventTableClick.bind(this);
-    this.eventsTable.display.on(this.handleEventTableClick);
-    this.handleBreweryTableClick = this.handleBreweryTableClick.bind(this);
-    this.breweryTable.display.on("click", this.handleBreweryTableClick);
     this.handleHomeButtonClick = this.handleHomeButtonClick.bind(this);
     this.homeButton.on("click", this.handleHomeButtonClick);
   }
 
-  onClick(showBreweryModal, showEventsModal, showPage1) {
-    this.showBreweryModal = showBreweryModal;
-    this.showEventsModal = showEventsModal;
+  onClick(showPage1) {
     this.showPage1 = showPage1;
   }
 
@@ -26,10 +20,10 @@ class Display {
       var $td = $("<td>", { text: "No Events Found" })
       var $tr = $("<tr>");
       this.eventsTable.display.append($tr.append($td));
-      this.eventsTable.display.off("click", this.handleEventTableClick);
+      this.eventsTable.toggleHandleClick("off");
       return;
     }
-    this.eventsTable.display.on("click", this.handleEventTableClick);
+    this.eventsTable.toggleHandleClick("on");
     const length = (() => {
       if (events.length > 3) {
         return 3;
@@ -49,12 +43,6 @@ class Display {
     }
   }
 
-  handleEventTableClick(event) {
-    var eventId = event.target.getAttribute("id");
-    var eventName = event.target.textContent;
-    this.showEventsModal(eventId, eventName);
-  }
-
   updateBreweryTable(breweries) {
     this.breweryTable.display.empty();
     const length = (() => {
@@ -70,12 +58,6 @@ class Display {
       var $tr = $("<tr>");
       this.breweryTable.display.append($tr.append($td));
     }
-  }
-
-  handleBreweryTableClick(event) {
-    var breweryId = event.target.getAttribute("id")
-    var breweryName = event.target.textContent;
-    this.showBreweryModal(breweryId, breweryName);
   }
 
   handleHomeButtonClick(event) {

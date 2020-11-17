@@ -29,9 +29,9 @@ var breweryTable = new Table($breweryTableTitle, $breweryTable);
 var eventModal = new Modal($eventsModal, $eventsModalButton);
 var breweryModal = new Modal($breweriesModal, $breweriesModalButton);
 var modals = new Modals(eventModal, breweryModal);
-var displayTest = new Display($headerElement, eventsTable, breweryTable, $page2Element, $homeButton, $loadingScreen);
+var display = new Display($headerElement, eventsTable, breweryTable, $page2Element, $homeButton, $loadingScreen);
 var form = new Form($formElement, $page1Element);
-var app = new App(form, displayTest, modals, errorDisplay);
+var app = new App(form, display, modals, errorDisplay);
 
 app.start();
 fillSelect(stateCodes);
