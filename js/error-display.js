@@ -4,19 +4,26 @@ class ErrorDisplay {
     this.serverError = serverError;
     this.backButton = backButton;
     this.handleBackButton = this.handleBackButton.bind(this);
-    this.backButton.on("click", this.handleBackButton);
+    this.errorPage.on("click", this.handleBackButton);
+    this.serverError.on("click", this.handleBackButton);
   }
 
   onClick(showPage1) {
     this.showPage1 = showPage1;
   }
 
-  handleBackButton(event) {
-    if (!this.errorPage.hasClass("d-none")) {
-      this.errorPage.addClass("d-none");
+  showError(type) {
+    if (type === "server") {
+      this.serverError.removeClass("d-none");
+    } else if (type === "user") {
+      this.errorPage.removeClass("d-none");
     }
-    if (!this.serverError.hasClass("d-none")) {
-      this.serverError.addClass("d-none");
+  }
+
+  handleBackButton(event) {
+    var currentTarget = event.currentTarget;
+    if (!currentTarget.classList.contains("d-none")) {
+      currentTarget.classList.add("d-none");
     }
     this.showPage1();
   }
