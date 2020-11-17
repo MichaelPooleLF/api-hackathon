@@ -13,7 +13,7 @@ class App {
   }
 
   start(){
-    this.form.onSubmit(this.display.showTables, this.getEventData, this.getBreweryData);
+    this.form.onSubmit(this.getEventData, this.getBreweryData);
     this.display.eventsTable.onClick(this.modals.eventModal.populateModal);
     this.display.breweryTable.onClick(this.modals.breweriesModal.populateModal);
     this.display.onClick(this.form.showHomePage);
@@ -39,7 +39,6 @@ class App {
   handleGetEventsDataSuccess(eventsObj) {
     if (eventsObj._embedded) {
       var events = eventsObj._embedded.events;
-      this.eventsCache = events;
       this.modals.eventModal.eventsCache = events;
     }
     this.display.eventsTable.updateTable(events);
@@ -70,7 +69,6 @@ class App {
     }
     this.loadingScreen.addClass("d-none");
     this.display.showTables();
-    this.breweryCache = breweriesArray;
     this.modals.breweriesModal.brewCache = breweriesArray;
     this.display.breweryTable.updateTable(breweriesArray);
     this.display.updateP2Text(this.form.city, this.form.stateCode)

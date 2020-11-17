@@ -7,8 +7,7 @@ class Form {
     this.formElement.on("submit", this.handleSubmit);
   }
 
-  onSubmit(showPage2, getEventData, getBreweryData) {
-    this.showPage2 = showPage2;
+  onSubmit(getEventData, getBreweryData) {
     this.getEventData = getEventData;
     this.getBreweryData = getBreweryData;
   }
