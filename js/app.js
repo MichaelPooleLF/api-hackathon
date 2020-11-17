@@ -1,10 +1,11 @@
 class App {
-  constructor(form, display, modals, errorDisplay){
+  constructor(form, display, modals, errorDisplay, loadingScreen){
     this.form = form;
     this.display = display
     this.modals = modals;
     this.errorDisplay = errorDisplay;
-    this.showError = this.showError.bind(this);
+    this.loadingScreen = loadingScreen;
+    this.showServerError = this.showServerError.bind(this);
     this.getEventData = this.getEventData.bind(this);
     this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
     this.getBreweryData = this.getBreweryData.bind(this);
@@ -19,40 +20,9 @@ class App {
     this.errorDisplay.onClick(this.form.showHomePage);
   }
 
-  showError() {
-    this.display.loadingScreen.addClass("d-none");
-    this.errorDisplay.serverError.removeClass("d-none");
-  }
-
-  getBreweryData(city, stateCode){
-    var stateName = "";
-    for (var property in stateCodes) { // stateCodes is defined in fill-select-tag.js
-      if (stateCode === stateCodes[property].abbreviation) {
-        stateName += stateCodes[property].name;
-      }
-    }
-    this.display.loadingScreen.removeClass("d-none");
-    $.ajax({
-      method: "GET",
-      url: "https://api.openbrewerydb.org/breweries?by_city=" + city +
-      "&by_state=" + stateName,
-      error: this.showError,
-      success: this.handleGetBreweryDataSuccess
-    });
-  }
-
-  handleGetBreweryDataSuccess(breweriesArray) {
-    if(breweriesArray.length === 0) {
-      this.display.loadingScreen.addClass("d-none");
-      this.errorDisplay.errorPage.removeClass("d-none");
-      return;
-    }
-    this.display.loadingScreen.addClass("d-none");
-    this.display.showTables();
-    this.breweryCache = breweriesArray;
-    this.modals.breweriesModal.brewCache = breweriesArray;
-    this.display.breweryTable.updateTable(breweriesArray);
-    this.display.updateP2Text(this.form.city, this.form.stateCode)
+  showServerError() {
+    this.loadingScreen.addClass("d-none");
+    this.errorDisplay.showError("server");
   }
 
   getEventData(city, stateCode) {
@@ -73,5 +43,36 @@ class App {
       this.modals.eventModal.eventsCache = events;
     }
     this.display.eventsTable.updateTable(events);
+  }
+
+  getBreweryData(city, stateCode){
+    var stateName = "";
+    for (var property in stateCodes) { // stateCodes is defined in fill-select-tag.js
+      if (stateCode === stateCodes[property].abbreviation) {
+        stateName += stateCodes[property].name;
+      }
+    }
+    this.loadingScreen.removeClass("d-none");
+    $.ajax({
+      method: "GET",
+      url: "https://api.openbrewerydb.org/breweries?by_city=" + city +
+      "&by_state=" + stateName,
+      error: this.showServerError,
+      success: this.handleGetBreweryDataSuccess
+    });
+  }
+
+  handleGetBreweryDataSuccess(breweriesArray) {
+    if(breweriesArray.length === 0) {
+      this.loadingScreen.addClass("d-none");
+      this.errorDisplay.showError("user");
+      return;
+    }
+    this.loadingScreen.addClass("d-none");
+    this.display.showTables();
+    this.breweryCache = breweriesArray;
+    this.modals.breweriesModal.brewCache = breweriesArray;
+    this.display.breweryTable.updateTable(breweriesArray);
+    this.display.updateP2Text(this.form.city, this.form.stateCode)
   }
 }

@@ -1,11 +1,10 @@
 class Display {
-  constructor(headerElement, eventsTable, breweryTable, page2Element, homeButton, loadingScreen) {
+  constructor(headerElement, eventsTable, breweryTable, page2Element, homeButton) {
     this.headerElement = headerElement;
     this.eventsTable = eventsTable;
     this.breweryTable = breweryTable;
     this.page2Element = page2Element;
     this.homeButton = homeButton;
-    this.loadingScreen = loadingScreen;
     this.handleHomeButtonClick = this.handleHomeButtonClick.bind(this);
     this.homeButton.on("click", this.handleHomeButtonClick);
   }

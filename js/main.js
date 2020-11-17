@@ -31,7 +31,7 @@ var breweryModal = new Modal($breweriesModal, $breweriesModalButton);
 var modals = new Modals(eventModal, breweryModal);
 var display = new Display($headerElement, eventsTable, breweryTable, $page2Element, $homeButton, $loadingScreen);
 var form = new Form($formElement, $page1Element);
-var app = new App(form, display, modals, errorDisplay);
+var app = new App(form, display, modals, errorDisplay, $loadingScreen);
 
 app.start();
 fillSelect(stateCodes);
