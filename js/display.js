@@ -14,6 +14,10 @@ class Display {
     this.showPage1 = showPage1;
   }
 
+  showTables() {
+    this.page2Element.removeClass("d-none");
+  }
+
   updateP2Text(city, stateCode) {
     this.headerElement.text(city + ", " + stateCode);
     this.eventsTable.title.text("Local Events");

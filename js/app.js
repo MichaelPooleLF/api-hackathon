@@ -4,8 +4,6 @@ class App {
     this.display = display
     this.modals = modals;
     this.errorDisplay = errorDisplay;
-    // this.showPage1 = this.showPage1.bind(this);
-    this.showPage2 = this.showPage2.bind(this);
     this.showError = this.showError.bind(this);
     this.getEventData = this.getEventData.bind(this);
     this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
@@ -14,23 +12,11 @@ class App {
   }
 
   start(){
-    this.form.onSubmit(this.showPage2, this.getEventData, this.getBreweryData);
+    this.form.onSubmit(this.display.showTables, this.getEventData, this.getBreweryData);
     this.display.eventsTable.onClick(this.modals.eventModal.populateModal);
     this.display.breweryTable.onClick(this.modals.breweriesModal.populateModal);
     this.display.onClick(this.form.showHomePage);
     this.errorDisplay.onClick(this.form.showHomePage);
-  }
-
-  // showPage1() {
-  //   this.form.page1Element.removeClass("d-none");
-  //   var city = this.form.formElement.find("#city");
-  //   var state = this.form.formElement.find("#stateCode")
-  //   city.val("");
-  //   state.val("AL");
-  // }
-
-  showPage2() {
-    this.display.page2Element.removeClass("d-none");
   }
 
   showError() {
@@ -62,7 +48,7 @@ class App {
       return;
     }
     this.display.loadingScreen.addClass("d-none");
-    this.showPage2();
+    this.display.showTables();
     this.breweryCache = breweriesArray;
     this.modals.breweriesModal.brewCache = breweriesArray;
     this.display.breweryTable.updateTable(breweriesArray);
