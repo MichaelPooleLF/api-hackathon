@@ -12,8 +12,6 @@ class App {
     this.handleGetEventsDataSuccess = this.handleGetEventsDataSuccess.bind(this);
     this.getBreweryData = this.getBreweryData.bind(this);
     this.handleGetBreweryDataSuccess = this.handleGetBreweryDataSuccess.bind(this);
-    this.populateEventsModal = this.populateEventsModal.bind(this);
-    this.populateBreweryModal = this.populateBreweryModal.bind(this);
   }
 
   start(){
@@ -96,55 +94,5 @@ class App {
       this.modals.eventModal.eventsCache = events;
     }
     this.display.eventsTable.updateTable(events);
-  }
-
-  populateEventsModal(eventId, eventName) {
-    var cachedAddress = "";
-    var cachedStartDate = "";
-    var cachedWebsite = "";
-    var $h4Element = this.modals.eventModal.display.find("h4");
-    var $liElements = this.modals.eventModal.display.find("li");
-    var address = $liElements[0];
-    var startDate = $liElements[1];
-    var $website = this.modals.eventModal.display.find("a");
-
-    this.modals.eventModal.showModal();
-    for (var i = 0; i < this.eventsCache.length; i++) {
-      if (this.eventsCache[i].id === eventId) {
-        cachedAddress = this.eventsCache[i]._embedded.venues[0].name;
-        cachedStartDate = this.eventsCache[i].dates.start.localDate;
-        cachedWebsite = this.eventsCache[i].url;
-      }
-    }
-
-    $h4Element.text(eventName);
-    address.textContent = "Where: " + cachedAddress;
-    startDate.textContent = "When: " + cachedStartDate;
-    $website.attr("href", cachedWebsite);
-  }
-
-  populateBreweryModal(breweryId, breweryName) {
-    var cachedAddress = "";
-    var cachedType = "";
-    var cachedWebsite = "";
-    var $h4Element = this.modals.breweriesModal.display.find("h4");
-    var $liElements = this.modals.breweriesModal.display.find("li");
-    var address = $liElements[0];
-    var type = $liElements[1];
-    var $website = this.modals.breweriesModal.display.find("a");
-
-    this.modals.breweriesModal.showModal();
-    for (var i = 0; i < this.breweryCache.length; i++) {
-      if (this.breweryCache[i].id === parseInt(breweryId)) {
-        cachedAddress = this.breweryCache[i].street;
-        cachedType = this.breweryCache[i].brewery_type;
-        cachedWebsite = this.breweryCache[i].website_url;
-      }
-    }
-
-    $h4Element.text(breweryName);
-    address.textContent = "Where: " + cachedAddress;
-    type.textContent = "Brewery Type: " + cachedType;
-    $website.attr("href", cachedWebsite);
   }
 }
