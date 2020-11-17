@@ -45,7 +45,7 @@ class Modal {
 
     $h4Element.text(name);
     liOne.textContent = "Where: " + modalData[0];
-    liTwo.textContent = "When: " + modalData[1];
+    liTwo.textContent = (this.eventsCache ? "When: " : "Brewery Type: ") + modalData[1];
     $website.attr("href", modalData[2]);
   }
 }
