@@ -1,4 +1,4 @@
-class Display {
+class DisplayTest {
   constructor(headerElement, eventsTable, breweryTable, page2Element, homeButton, loadingScreen) {
     this.headerElement = headerElement;
     this.eventsTable = eventsTable;

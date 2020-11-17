@@ -25,10 +25,13 @@ var $backButton = $(".back-button");
 
 var errorDisplay = new ErrorDisplay($errorPage, $serverError, $backButton);
 var modals = new Modals($eventsModal, $eventsModalButton, $breweriesModal, $breweriesModalButton);
-var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element,
-  $eventsTableTitle, $breweryTableTitle, $homeButton, $loadingScreen);
+// var display = new Display($headerElement, $eventsTable, $breweryTable, $page2Element,
+//   $eventsTableTitle, $breweryTableTitle, $homeButton, $loadingScreen);
+var eventsTable = new Table($eventsTableTitle, $eventsTable);
+var breweryTable = new Table($breweryTableTitle, $breweryTable);
+var displayTest = new Display($headerElement, eventsTable, breweryTable, $page2Element, $homeButton, $loadingScreen);
 var form = new Form($formElement, $page1Element);
-var app = new App(form, display, modals, errorDisplay);
+var app = new App(form, displayTest, modals, errorDisplay);
 
 app.start();
 fillSelect(stateCodes);

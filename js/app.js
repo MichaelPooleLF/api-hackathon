@@ -43,8 +43,8 @@ class App {
 
   updateP2Text(city, stateCode) {
     this.display.headerElement.text(city + ", " + stateCode);
-    this.display.eventsTableTitle.text("Local Events");
-    this.display.breweryTableTitle.text("Local Breweries");
+    this.display.eventsTable.title.text("Local Events");
+    this.display.breweryTable.title.text("Local Breweries");
   }
 
   getBreweryData(city, stateCode){
