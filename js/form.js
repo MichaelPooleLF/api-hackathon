@@ -2,6 +2,7 @@ class Form {
   constructor(formElement, page1Element) {
     this.formElement = formElement;
     this.page1Element = page1Element;
+    this.showHomePage = this.showHomePage.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.formElement.on("submit", this.handleSubmit);
   }
@@ -12,10 +13,21 @@ class Form {
     this.getBreweryData = getBreweryData;
   }
 
+  showHomePage() {
+    this.page1Element.removeClass("d-none");
+
+    var city = this.formElement.find("#city");
+    var state = this.formElement.find("#stateCode")
+
+    city.val("");
+    state.val("AL");
+  }
+
   handleSubmit(event){
     event.preventDefault();
 
     var formData = new FormData(event.target);
+
     this.city = formData.get("city");
     this.stateCode = formData.get("stateCode");
 
