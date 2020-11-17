@@ -48,7 +48,7 @@ class Table {
 
     var namesArray = [];
 
-    for (var i = 0; namesArray.length < length; i++) {
+    for (var i = 0; data[i] && namesArray.length < length; i++) {
       var name = data[i].name;
       if (namesArray.indexOf(name) === -1) {
         namesArray.push(name);
