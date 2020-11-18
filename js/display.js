@@ -9,8 +9,10 @@ class Display {
     this.homeButton.on("click", this.handleHomeButtonClick);
   }
 
-  onClick(showHomePage) {
+  onClick(showHomePage, populateEventModal, populateBreweryModal) {
     this.showHomePage = showHomePage;
+    this.eventsTable.onClick(populateEventModal);
+    this.breweryTable.onClick(populateBreweryModal);
   }
 
   showTables() {
@@ -27,4 +29,5 @@ class Display {
     this.page2Element.addClass("d-none");
     this.showHomePage();
   }
+
 }

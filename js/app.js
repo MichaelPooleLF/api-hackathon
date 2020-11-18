@@ -13,10 +13,11 @@ class App {
   }
 
   start(){
+    const populateEventModal = this.modals.eventModal.populateModal;
+    const populateBreweryModal = this.modals.breweriesModal.populateModal;
+
     this.form.onSubmit(this.getEventData, this.getBreweryData);
-    this.display.eventsTable.onClick(this.modals.eventModal.populateModal);
-    this.display.breweryTable.onClick(this.modals.breweriesModal.populateModal);
-    this.display.onClick(this.form.showHomePage);
+    this.display.onClick(this.form.showHomePage, populateEventModal, populateBreweryModal);
     this.errorDisplay.onClick(this.form.showHomePage);
   }
 

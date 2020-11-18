@@ -8,14 +8,14 @@ class Table {
     this.updateTable = this.updateTable.bind(this);
   }
 
-  onClick(showModal) {
-    this.showModal = showModal;
+  onClick(populateModal) {
+    this.populateModal = populateModal;
   }
 
   handleTableClick(event) {
     var eventId = event.target.getAttribute("id");
     var eventName = event.target.textContent;
-    this.showModal(eventId, eventName);
+    this.populateModal(eventId, eventName);
   }
 
   toggleHandleClick(status) {
