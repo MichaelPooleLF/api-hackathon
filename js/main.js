@@ -14,10 +14,10 @@ var $page2Element = $(".page-2");
 var $homeButton = $(".page-2 a");
 
 // selectors for modals
-var $eventsModal = $(".events-modal");
-var $eventsModalButton = $(".events-modal button");
-var $breweriesModal = $(".breweries-modal");
-var $breweriesModalButton = $(".breweries-modal button");
+var $modal = $(".my-modal");
+var $modalButton = $(".my-modal button");
+// var $breweriesModal = $(".breweries-modal");
+// var $breweriesModalButton = $(".breweries-modal button");
 
 // selectors for errorDisplay
 var $errorPage = $(".error-page");
@@ -31,8 +31,8 @@ var $loadingScreen = $(".loading-screen");
 var errorDisplay = new ErrorDisplay($errorPage, $serverError, $backButton);
 var eventsTable = new Table($eventsTableTitle, $eventsTable);
 var breweryTable = new Table($breweryTableTitle, $breweryTable);
-var eventModal = new Modal($eventsModal, $eventsModalButton);
-var breweryModal = new Modal($breweriesModal, $breweriesModalButton);
+var eventModal = new Modal($modal, $modalButton);
+var breweryModal = new Modal($modal, $modalButton);
 var modals = new Modals(eventModal, breweryModal);
 var display = new Display($headerElement, eventsTable, breweryTable, $page2Element, $homeButton);
 var form = new Form($formElement, $page1Element);
