@@ -11,7 +11,6 @@ var $breweryTableTitle = $(".brewery-table-title");
 // selectors for display
 var $headerElement = $("main.success header > h2");
 var $page2Element = $(".page-2");
-var $page2TestElement = $(".page-2-test");
 var $homeButton = $(".page-2 a");
 
 // selectors for modal
@@ -28,10 +27,10 @@ var $loadingScreen = $(".loading-screen");
 
 
 var errorDisplay = new ErrorDisplay($errorPage, $serverError, $backButton);
-var eventsTable = new TableTest($eventsTableTitle, $eventsTable);
-var breweryTable = new TableTest($breweryTableTitle, $breweryTable);
+var eventsTable = new Table($eventsTableTitle, $eventsTable);
+var breweryTable = new Table($breweryTableTitle, $breweryTable);
 var modal = new Modal($modal, $modalButton);
-var display = new Display($headerElement, eventsTable, breweryTable, $page2TestElement, $homeButton);
+var display = new Display($headerElement, eventsTable, breweryTable, $page2Element, $homeButton);
 var form = new Form($formElement, $page1Element);
 var app = new App(form, display, modal, errorDisplay, $loadingScreen);
 
