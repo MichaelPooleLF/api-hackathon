@@ -182,7 +182,7 @@ h4, h2 {
 .back-button {
   margin-top: 3rem;
 }
-/*
+
 .iframe .row{
   height: 80vh;
   margin-top: 2rem;
@@ -203,7 +203,7 @@ iframe {
   position: absolute;
   right: 6px;
   top: 3px;
-} */
+}
 
 td:hover {
   background-color: lightgray;
@@ -218,10 +218,6 @@ td:hover {
   width: 250px;
   height: auto;
   animation: spin 4s linear infinite ;
-}
-
-.white {
-  color: white;
 }
 
 @keyframes spin {
