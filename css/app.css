@@ -126,7 +126,7 @@ h3 {
   font-size: 24px;
 }
 
-.my-modal, .iframe, .modal-loader {
+.my-modal, .modal-loader {
   position: fixed;
   height: 100vh;
   max-width: initial;

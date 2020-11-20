@@ -1,8 +1,8 @@
 class App {
-  constructor(form, display, modals, errorDisplay, loadingScreen){
+  constructor(form, display, modal, errorDisplay, loadingScreen){
     this.form = form;
     this.display = display
-    this.modals = modals;
+    this.modal = modal;
     this.errorDisplay = errorDisplay;
     this.loadingScreen = loadingScreen;
     this.showServerError = this.showServerError.bind(this);
@@ -13,11 +13,8 @@ class App {
   }
 
   start(){
-    const populateEventModal = this.modals.eventModal.populateModal;
-    const populateBreweryModal = this.modals.breweriesModal.populateModal;
-
     this.form.onSubmit(this.getEventData, this.getBreweryData);
-    this.display.onClick(this.form.showHomePage, populateEventModal, populateBreweryModal);
+    this.display.onClick(this.form.showHomePage, this.modal.populateModal);
     this.errorDisplay.onClick(this.form.showHomePage);
   }
 
@@ -40,9 +37,9 @@ class App {
   handleGetEventsDataSuccess(eventsObj) {
     if (eventsObj._embedded) {
       var events = eventsObj._embedded.events;
-      this.modals.eventModal.eventsCache = events;
+      this.modal.eventsCache = events;
     }
-    this.display.eventsTable.updateTable(events);
+    this.display.eventsTable.updateTable(events, "event");
   }
 
   getBreweryData(city, stateCode){
@@ -70,8 +67,8 @@ class App {
     }
     this.loadingScreen.addClass("d-none");
     this.display.showTables();
-    this.modals.breweriesModal.brewCache = breweriesArray;
-    this.display.breweryTable.updateTable(breweriesArray);
+    this.modal.brewCache = breweriesArray;
+    this.display.breweryTable.updateTable(breweriesArray, "brewery");
     this.display.updateP2Text(this.form.city, this.form.stateCode)
   }
 }

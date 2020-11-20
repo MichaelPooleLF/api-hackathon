@@ -9,10 +9,10 @@ class Display {
     this.homeButton.on("click", this.handleHomeButtonClick);
   }
 
-  onClick(showHomePage, populateEventModal, populateBreweryModal) {
+  onClick(showHomePage, populateModal) {
     this.showHomePage = showHomePage;
-    this.eventsTable.onClick(populateEventModal);
-    this.breweryTable.onClick(populateBreweryModal);
+    this.eventsTable.onClick(populateModal);
+    this.breweryTable.onClick(populateModal);
   }
 
   showTables() {

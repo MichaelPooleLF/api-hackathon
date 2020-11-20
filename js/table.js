@@ -12,10 +12,11 @@ class Table {
     this.populateModal = populateModal;
   }
 
-  handleTableClick(event) {
-    var eventId = event.target.getAttribute("id");
-    var eventName = event.target.textContent;
-    this.populateModal(eventId, eventName);
+  handleTableClick(data) {
+    var dataId = event.target.getAttribute("id");
+    var dataName = event.target.textContent;
+    var dataType = event.target.className;
+    this.populateModal(dataId, dataName, dataType);
   }
 
   toggleHandleClick(status) {
@@ -26,7 +27,7 @@ class Table {
     }
   }
 
-  updateTable(data) {
+  updateTable(data, dataType) {
     this.display.empty();
     if (!data) {
       var $emptyTD = $("<td>", { text: "No Events Found" })
@@ -52,7 +53,7 @@ class Table {
       var name = data[i].name;
       if (namesArray.indexOf(name) === -1) {
         namesArray.push(name);
-        var $td = $("<td>", { text: name, id: data[i].id })
+        var $td = $("<td>", { text: name, id: data[i].id, class: dataType })
         var $tr = $("<tr>");
         this.display.append($tr.append($td));
       }

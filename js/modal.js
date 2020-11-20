@@ -15,7 +15,7 @@ class Modal {
     this.display.addClass("d-none");
   }
 
-  populateModal(id, name) {
+  populateModal(id, name, dataType) {
     var modalData = [];
     var $h4Element = this.display.find("h4");
     var $liElements = this.display.find("li");
@@ -25,7 +25,7 @@ class Modal {
 
     this.showModal();
 
-    if (this.eventsCache) {
+    if (dataType === "event") {
       for (var e = 0; e < this.eventsCache.length; e++) {
         if (this.eventsCache[e].id === id) {
           modalData[0] = this.eventsCache[e]._embedded.venues[0].name;
@@ -33,7 +33,7 @@ class Modal {
           modalData[2] = this.eventsCache[e].url;
         }
       }
-    } else if (this.brewCache) {
+    } else if (dataType === "brewery") {
       for (var b = 0; b < this.brewCache.length; b++) {
         if (this.brewCache[b].id === parseInt(id)) {
           modalData[0] = this.brewCache[b].street;
