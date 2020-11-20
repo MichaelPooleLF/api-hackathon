@@ -35,11 +35,25 @@ class App {
   }
 
   handleGetEventsDataSuccess(eventsObj) {
+    var data = null;
+
     if (eventsObj._embedded) {
-      var events = eventsObj._embedded.events;
-      this.modal.eventsCache = events;
+      var namesArray = [];
+      data = eventsObj._embedded.events.map(function(element) {
+        if (namesArray.indexOf(element.name) === -1) {
+          namesArray.push(element.name);
+          return {
+            id: element.id,
+            tdOne: element.name,
+            tdTwo: element.dates.start.localDate,
+            tdThree: {text: "More details", url: element.url }
+          }
+        }
+      })
+      this.modal.eventsCache = data;
     }
-    this.display.eventsTable.updateTable(events, "event");
+    var header = ["Event", "Event Date", "Website"];
+    this.display.eventsTable.updateTable(data, header, "event");
   }
 
   getBreweryData(city, stateCode){
@@ -65,10 +79,20 @@ class App {
       this.errorDisplay.showError("user");
       return;
     }
+
+    var data = breweriesArray.map(function(element) {
+      return {
+        id: element.id,
+        tdOne: element.name,
+        tdTwo: element.brewery_type,
+        tdThree: { text: "Visit their site!", url: element.website_url }
+      }
+    })
+    var header = ["Brewery", "Brewery Type", "Website"]
+    this.modal.brewCache = data;
+    this.display.breweryTable.updateTable(data, header, "brewery");
     this.loadingScreen.addClass("d-none");
     this.display.showTables();
-    this.modal.brewCache = breweriesArray;
-    this.display.breweryTable.updateTable(breweriesArray, "brewery");
     this.display.updateP2Text(this.form.city, this.form.stateCode)
   }
 }
