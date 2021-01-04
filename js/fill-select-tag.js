@@ -3,15 +3,15 @@
 var $selectTag = $("select");
 
 function fillSelect(array) {
-  for (var i = 0; array[i]; i++) {
-    var $optionTag = $("<option>", {
+  for (let i = 0; array[i]; i++) {
+    const $optionTag = $("<option>", {
       value: array[i].abbreviation,
       text: array[i].abbreviation + " - " + array[i].name });
     $selectTag.append($optionTag);
   }
 }
 
-var stateCodes = [
+const stateCodes = [
   {
     "name": "Alabama",
     "abbreviation": "AL"

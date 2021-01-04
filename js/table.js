@@ -13,9 +13,9 @@ class Table {
   }
 
   handleTableClick(data) {
-    var dataId = event.target.getAttribute("id");
-    var dataName = event.target.textContent;
-    var dataType = event.target.className;
+    const dataId = event.target.getAttribute("id");
+    const dataName = event.target.textContent;
+    const dataType = event.target.className;
     this.populateModal(dataId, dataName, dataType);
   }
 
@@ -30,8 +30,8 @@ class Table {
   updateTable(data, dataType) {
     this.display.empty();
     if (!data) {
-      var $emptyTD = $("<td>", { text: "No Events Found" })
-      var $emptyTR = $("<tr>");
+      const $emptyTD = $("<td>", { text: "No Events Found" })
+      const $emptyTR = $("<tr>");
       this.display.append($emptyTR.append($emptyTD));
       this.toggleHandleClick("off");
       return;
@@ -39,7 +39,7 @@ class Table {
 
     this.toggleHandleClick("on");
 
-    var length = null;
+    let length = null;
 
     if (data.length > 3) {
       length = 3;
@@ -47,14 +47,14 @@ class Table {
       length = data.length;
     }
 
-    var namesArray = [];
+    let namesArray = [];
 
-    for (var i = 0; data[i] && namesArray.length < length; i++) {
-      var name = data[i].name;
+    for (let i = 0; data[i] && namesArray.length < length; i++) {
+      const name = data[i].name;
       if (namesArray.indexOf(name) === -1) {
         namesArray.push(name);
-        var $td = $("<td>", { text: name, id: data[i].id, class: dataType })
-        var $tr = $("<tr>");
+        const $td = $("<td>", { text: name, id: data[i].id, class: dataType })
+        const $tr = $("<tr>");
         this.display.append($tr.append($td));
       }
     }
