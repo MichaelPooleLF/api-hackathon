@@ -15,8 +15,8 @@ class Form {
   showHomePage() {
     this.page1Element.removeClass("d-none");
 
-    var city = this.formElement.find("#city");
-    var state = this.formElement.find("#stateCode")
+    const city = this.formElement.find("#city");
+    const state = this.formElement.find("#stateCode")
 
     city.val("");
     state.val("AL");
@@ -25,7 +25,7 @@ class Form {
   handleSubmit(event){
     event.preventDefault();
 
-    var formData = new FormData(event.target);
+    const formData = new FormData(event.target);
 
     this.city = formData.get("city");
     this.stateCode = formData.get("stateCode");

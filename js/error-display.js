@@ -21,7 +21,7 @@ class ErrorDisplay {
   }
 
   handleBackButton(event) {
-    var currentTarget = event.currentTarget;
+    const currentTarget = event.currentTarget;
     if (!currentTarget.classList.contains("d-none")) {
       currentTarget.classList.add("d-none");
     }
