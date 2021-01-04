@@ -1,14 +1,16 @@
 const path = require("path");
 
+const entryPath = path.join(__dirname, "src/main.js");
+const outputPath = path.join(__dirname, "server/public/");
+
 module.exports = {
   entry: {
-    app: "./src/main.js"
+    app: entryPath
   },
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "main.bundle.js"
+    path: outputPath,
   },
-  devtool: "hidden-source-map",
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -24,5 +26,16 @@ module.exports = {
         ]
       }
     ]
+  },
+  devServer: {
+    contentBase: outputPath,
+    historyApiFallback: true,
+    host: "0.0.0.0",
+    port: "3000",
+    proxy: {
+      '/api': `http://localhost:3000`
+    },
+    stats: "minimal",
+    watchContentBase: true
   }
 }

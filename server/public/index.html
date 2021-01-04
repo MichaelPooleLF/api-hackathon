@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.1/css/bootstrap.min.css"
+    integrity="sha512-oidSClV2QEJnexqKyjJZtJqqhWEpDfa/PIEFCSX8mVA9YlaruAfykMto2uMyV8rc7dt00LieW10osgOyDhMkqg=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/app.css">
+  <title>NightOut - Nights to Remember</title>
+</head>
+
+<body>
+
+  <div class="page-1 container">
+    <nav class="row">
+      <h1 class="col-6">NightOut</h1>
+    </nav>
+    <main class="row">
+      <form class="col-10 offset-1 my-form" action="#">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city" id="city" required>
+        </div>
+        <div class="form-group">
+          <label for="stateCode">State</label>
+          <select class="form-control" name="stateCode" id="stateCode" required></select>
+        </div>
+        <button class="mx-auto" type="submit">Find Events</button>
+      </form>
+    </main>
+  </div>
+
+  <div class="error-page container d-none">
+    <nav class="row">
+      <h1 class="col-6">NightOut</h1>
+    </nav>
+    <main class="row">
+      <header class="col-12">
+        <h2>
+          Sorry, no event/brewery data was found for that combination. <br>
+          <br>
+          Please enter a new City/State combination.
+        </h2>
+      </header>
+      <button class="back-button" type="button">Back</button>
+    </main>
+  </div>
+
+  <div class="server-error container d-none">
+    <nav class="row">
+      <h1 class="col-6">NightOut</h1>
+    </nav>
+    <main class="row">
+      <header class="col-12">
+        <h2>
+          Sorry, an unexpected error occurred and we could not retrieve the information
+          you requested.
+          <br>
+          <br>
+          Please return to the home page and try again.
+        </h2>
+      </header>
+      <button class="back-button" type="button">Back</button>
+    </main>
+  </div>
+
+  <div class="loading-screen container h-100 d-none">
+    <main class="row h-100">
+      <header class="col-12 d-flex flex-column align-items-center">
+        <img class="loading-icon" src="/images/loading-icon.png" alt="crescent moon loading icon">
+        <h2 class="mt-3">Loading...</h2>
+      </header>
+    </main>
+  </div>
+
+  <div class="page-2 container d-none">
+    <nav class="row">
+      <h1 class="col-6">NightOut</h1>
+      <a class="home-button" href="#"><img src="/images/home-icon.svg" alt="home icon"></a>
+    </nav>
+    <main class="row success">
+      <header class="col-12">
+        <h2>
+          Whoops! Please Enter a Valid City/State Combination
+        </h2>
+      </header>
+      <div class="col-12">
+        <h3 class="events-table-title">
+        </h3>
+      </div>
+      <table class="col-10 offset-1 table table-sm events-table border-bottom">
+        <tbody></tbody>
+      </table>
+      <div class="col-12">
+        <h3 class="brewery-table-title">
+        </h3>
+      </div>
+      <table class="col-10 offset-1 table table-sm brewery-table border-bottom">
+        <tbody></tbody>
+      </table>
+    </main>
+  </div>
+
+  <div class="my-modal container d-none">
+    <div class="row">
+      <div class="col-10">
+        <header>
+          <h4>Event 1</h4>
+        </header>
+        <ul>
+          <li>Address</li>
+          <li>Start Date</li>
+          <li><a href="#" target="_blank">Learn More</a></li>
+        </ul>
+        <button type="button" class="btn btn-dark">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+    integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+    crossorigin="anonymous"></script>
+  <!-- <script src="./js/fill-select-tag.js"></script>
+  <script src="./js/error-display.js"></script>
+  <script src="./js/modal.js"></script>
+  <script src="./js/table.js"></script>
+  <script src="./js/display.js"></script>
+  <script src="./js/form.js"></script>
+  <script src="./js/app.js"></script>
+  <script type="module" src="./js/main.js"></script> -->
+  <script src="/src/fill-select-tag.js"></script>
+  <script src="/src/error-display.js"></script>
+  <script src="/src/modal.js"></script>
+  <script src="/src/table.js"></script>
+  <script src="/src/display.js"></script>
+  <script src="/src/form.js"></script>
+  <script src="/src/app.js"></script>
+  <!-- <script src="./src/main.js"></script> -->
+  <script src="/build/main.bundle.js"></script>
+</body>
+
+</html>
