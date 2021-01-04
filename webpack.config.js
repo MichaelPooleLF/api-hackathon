@@ -2,11 +2,11 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    app: "./src/app.js"
+    app: "./src/main.js"
   },
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "app.bundle.js"
+    filename: "main.bundle.js"
   },
   devtool: "hidden-source-map",
   module: {
